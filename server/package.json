@@ -1,7 +1,6 @@
 {
 	"name": "alive-curation-server",
 	"version": "0.0.1",
-	"type": "module",
 	"main": "app.js",
 	"scripts": {
     "lint": "eslint app.js",

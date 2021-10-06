@@ -1,21 +1,16 @@
-import express from "express"
-import cors from "cors"
-import dotenv from "dotenv"
-import morgan from "morgan"
-import hpp from "hpp"
-import helmet from "helmet"
-import cookieParser from "cookie-parser"
-import mongoose from "mongoose"
+const express = require("express")
+const cors = require("cors")
+const dotenv = require("dotenv")
+const morgan = require("morgan")
+const hpp = require("hpp")
+const helmet = require("helmet")
+const cookieParser = require("cookie-parser")
 
 dotenv.config()
 
+require("./db")
 const app = express()
 const dev = process.env.NODE_ENV !== "production"
-
-mongoose
-	.connect(process.env.MONGO_URI)
-	.then(console.log("MongoDB Connected!!"))
-	.catch((err) => console.error(err))
 
 if (dev) {
 	app.use(morgan("dev"))
@@ -25,7 +20,7 @@ if (dev) {
 	app.use(hpp())
 	app.use(helmet())
 	app.use(cors({ origin: "site-url", credentials: true }))
-}
+
 
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
