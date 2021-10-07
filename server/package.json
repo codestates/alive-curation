@@ -1,22 +1,25 @@
 {
 	"name": "alive-curation-server",
 	"version": "0.0.1",
-	"type": "module",
 	"main": "app.js",
 	"scripts": {
-    "lint": "eslint app.js",
+		"lint": "eslint app.js",
 		"start:dev": "nodemon app.js"
 	},
 	"license": "ISC",
 	"dependencies": {
+		"bcrypt": "^5.0.1",
 		"cookie-parser": "^1.4.5",
 		"cors": "^2.8.5",
 		"dotenv": "^10.0.0",
 		"express": "^4.17.1",
+		"express-session": "^1.17.2",
 		"helmet": "^4.6.0",
 		"hpp": "^0.2.3",
 		"mongoose": "^6.0.9",
-		"morgan": "^1.10.0"
+		"morgan": "^1.10.0",
+		"passport": "^0.5.0",
+		"passport-local": "^1.0.0"
 	},
 	"devDependencies": {
 		"eslint": "^5.16.0",
