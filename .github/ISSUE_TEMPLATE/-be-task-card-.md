@@ -1,7 +1,7 @@
 ---
 name: "[BE/Task Card]"
 about: Describe this issue template's purpose here.
-title: ''
+title: '[server] [type] - 설명'
 labels: ''
 assignees: ''
 
