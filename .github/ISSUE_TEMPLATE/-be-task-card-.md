@@ -10,7 +10,7 @@ assignees: ''
 ---
 name: Task Card
 about: Task card 생성시 사용되는 template입니다
-title: "[server] [마일스톤] - 설명"
+title: "[Server] [마일스톤] - 설명"
 labels: ''
 assignees: ''
 
