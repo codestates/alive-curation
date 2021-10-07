@@ -1,28 +1,18 @@
 ---
 name: Task Card
-about: Describe this issue template's purpose here.
-title: ''
-labels: ''
+about: Task card 생성시 사용되는 template입니다
+title: "[client] [마일스톤] - 설명"
+labels: client
 assignees: ''
 
 ---
 
----
-name: BE Task Issue
-about: Task Issue
-title: "[BE/TASK] "
-labels: ''
-assignees: ''
+### ISSUE
+- Group: `client`
+- Type: `bug`, `feature`, `delete`
+- Detail: fix actions from client redux
 
----
-
-## ISSUE
-- Group : ``
-- Type : ``
-- Detail : 
-
-## TODO
-- [ ] task1
-
-## Estimated Time
-`h`
+### TODO
+1. [ ] Job1
+2. [ ] Job2
+3. [ ] Job3
