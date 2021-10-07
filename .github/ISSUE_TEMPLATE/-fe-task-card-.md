@@ -1,8 +1,8 @@
 ---
-name: "[FE/Task Card]"
+name: Task Card
 about: Task card 생성시 사용되는 template입니다
-title: "[client] [마일스톤] - 설명"
-labels: ''
+title: "[client] [type] - 설명"
+labels: client
 assignees: ''
 
 ---
@@ -15,4 +15,12 @@ assignees: ''
 ### TODO
 1. [ ] Job1
 2. [ ] Job2
-3. [X] Job3
+3. [ ] Job3
+
+### Estimated Time
+`0.5h`
+`1h`
+`1.5h`
+`2h`
+`2.5h`
+`3h`
