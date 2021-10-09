@@ -1,7 +1,5 @@
 const mongoose = require("mongoose")
-const dotenv = require("dotenv")
-
-dotenv.config()
+const { Posts } = require("./models/Posts")
 
 if (!process.env.MONGO_URI) {
 	console.error("MongoDB connection string is missing!")
