@@ -5,6 +5,9 @@ const morgan = require("morgan")
 const hpp = require("hpp")
 const helmet = require("helmet")
 const cookieParser = require("cookie-parser")
+const passport = require("passport")
+const userRouter = require("./routes/user")
+const passportConfig = require("./lib/passport")
 
 dotenv.config()
 
@@ -25,9 +28,13 @@ if (dev) {
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 app.use(cookieParser(process.env.COOKIE_SECURE))
+app.use(passport.initialize())
+passportConfig()
+
+app.use("/user", userRouter)
 
 app.get("/", (req, res) => {
-	res.status(200).send("hello")
+	res.status(200).json({ code: 200, message: "sever is ready!" })
 })
 
 const port = dev ? 8080 : process.env.PORT
