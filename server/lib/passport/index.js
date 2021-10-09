@@ -1,6 +1,7 @@
 const passport = require("passport")
 const db = require("../../db")
 const local = require("./local")
+const jwt = require("./jwt")
 
 module.exports = () => {
 	passport.serializeUser((user, done) => done(null, user._id))
@@ -10,4 +11,5 @@ module.exports = () => {
 			.catch((err) => done(err))
 	})
 	local()
+	jwt()
 }
