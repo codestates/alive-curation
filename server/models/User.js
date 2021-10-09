@@ -21,13 +21,10 @@ const userSchema = mongoose.Schema({
 		type: Number,
 		default: 0,
 	},
-	thumbnail: String,
-	token: {
+	thumbnail: {
 		type: String,
-	},
-	tokenExp: {
-		type: String,
-	},
+		default: "https://www.svgrepo.com/show/106358/avatar.svg",
+	}
 })
 
 userSchema.pre("save", async function (next) {
