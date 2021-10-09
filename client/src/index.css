@@ -11,3 +11,10 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+@font-face {
+  font-family: 'Highman Trial';
+  font-style: regular;
+  font-weight: regular;
+  src: url("fonts/highman-trial.regular.woff") format('woff'),
+}

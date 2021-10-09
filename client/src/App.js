@@ -1,24 +1,58 @@
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter, Switch, Route, useHistory, Link, Redirect } from "react-router-dom"
+import { useState } from "react"
+import Home from "./Home"
+import HomeButton from "./components/Button/HomeButton"
+import LoginButton from "./components/Button/LoginButton"
+import LogoutButton from "./LogoutButton"
+import Profile from "./pages/Profile"
+import AuthRoute from "./AuthRoute"
+import LoginForm from "./LoginForm"
+import Login from "./pages/Login.js"
+import Landing from "./pages/Landing"
 
-function App() {
+
+function App( props ) {
+
+  // let isAuthorized = sessionStorage.getItem("isAuthorized");
+
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <BrowserRouter>
+        <Link to="/">
+          <HomeButton/>
+        </Link>
+        <Link to="/login">
+          <LoginButton/>
+        </Link>
+          <Switch>
+            <Route exact path="/" component={Home} />
+            {props.isLoggedIn ? (
+              <Route path="/user/profile" component={Profile}>
+                <LogoutButton/>
+              </Route>
+
+            ):(
+              <Redirect to={{
+                  pathname : '/login',
+                  state: { from: props.location } 
+              }} />
+            )}
+          </Switch>
+      </BrowserRouter>
     </div>
+
+    // <div>
+    //   {!isAuthorized ? <Redirect to="/login" /> : <Redirect to="/" />}
+    //   <Switch>
+    //     <Route path="/login">
+    //       <Login />
+    //     </Route>
+    //     <Route path="/">
+    //       <HomeButton />
+    //     </Route>
+    //   </Switch>
+    // </div>
   );
 }
 
