@@ -66,7 +66,7 @@ module.exports = {
 		return res.status(200).json({ message: "logout-success" })
 	},
 	auth: async (req, res) => {
-		const userInfo = db.getUserById(req._id)
+		const userInfo = await db.getUserById(req._id)
 		delete userInfo.password
 		return res.status(200).json({ userInfo, message: "get-userinfo-success" })
 	},
