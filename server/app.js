@@ -33,6 +33,8 @@ passportConfig()
 
 app.use("/user", userRouter)
 
+app.use(require("./routes/postsRouter"))
+
 app.get("/", (req, res) => {
 	res.status(200).json({ code: 200, message: "sever is ready!" })
 })
