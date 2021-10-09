@@ -12,8 +12,10 @@ module.exports = {
 				return res.status(400).send({ message: "invalid-data" })
 			}
 
+			/*eslint-disable no-useless-escape*/
 			const regex =
 				/^([\w\_\-])*[a-zA-Z0-9]+([\w\.\_\-])*([a-zA-Z0-9])+([\w\.\_\-])+@([a-zA-Z0-9]+\.)+[a-zA-Z0-9]{2,8}$/
+			/*eslint-enable no-useless-escape*/
 			if (!regex.test(email)) {
 				return res.status(400).send({ email, message: "invalid-email" })
 			}
@@ -38,7 +40,7 @@ module.exports = {
 		passport.authenticate("local", async (err, user, info) => {
 			if (err || !user) {
 				return info.message === "Missing credentials"
-					? res.status(400).json({ message: "invalid-data"})
+					? res.status(400).json({ message: "invalid-data" })
 					: res.status(info.code).json({ message: info.message })
 			}
 
