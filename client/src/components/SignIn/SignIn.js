@@ -47,7 +47,7 @@ const SignIn = ({ showModal, setShowModal }) => {
   useEffect(() => {
     document.addEventListener("keydown", closeKey);
     return () => document.removeEventListener("keydown", closeKey);
-  }, [closeKey]);
+  }, [closeKey]); // 찾아서 설명.
 
   if (!showModal) return null;
 
