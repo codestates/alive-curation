@@ -102,6 +102,8 @@ export const Email = Styled.input`
   padding: 0.2em 0.8em;
   outline: none;
   box-sizing: border-box;
+
+  
 `;
 
 export const Password = Styled.input`
