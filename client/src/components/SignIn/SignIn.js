@@ -1,5 +1,6 @@
-import React, { useState, useEffect, useRef, useCallback } from "react";
-import { Link } from "react-router-dom";
+import React, { useState, useRef, useEffect } from "react";
+import axios from "axios";
+import SignUp from "./SignUp";
 import {
   Modal,
   ModalWrapper,
@@ -10,45 +11,24 @@ import {
   Btn,
   Img,
   ModalContents,
-  Email,
-  Password,
   LoginBtn,
   JoinBtn,
   Line,
-  Wrapper,
-  Name,
+  Email2,
+  Password2,
 } from "./SignIn.Styled";
 import Logo from "../../images/logo.svg";
 const SignIn = ({ showModal, setShowModal }) => {
   const modalRef = useRef();
-  // console.log(modalRef);
-
   const [join, setJoin] = useState(false);
-  const [on, setOn] = useState(false);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [passwordAgain, setPasswordAgain] = useState("");
-  const [name, setName] = useState("");
 
   const closeModal = (e) => {
     if (modalRef.current === e.target) {
       setShowModal(false);
     }
   };
-
-  const closeKey = useCallback(
-    (e) => {
-      if (e.key === "Escape" && on) {
-        setOn(false);
-      }
-    },
-    [setShowModal, showModal]
-  );
-  useEffect(() => {
-    document.addEventListener("keydown", closeKey);
-    return () => document.removeEventListener("keydown", closeKey);
-  }, [closeKey]); // 찾아서 설명.
-
   if (!showModal) return null;
 
   const emailChange = (e) => {
@@ -57,66 +37,18 @@ const SignIn = ({ showModal, setShowModal }) => {
   const passwordChange = (e) => {
     setPassword(e.target.value);
   };
-  const passwordAgainChange = (e) => {
-    setPasswordAgain(e.target.value);
-  };
-  const nameChange = (e) => {
-    setName(e.target.value);
-  };
 
   return (
     <>
-      <Modal>
-        <ModalWrapper>
-          <SlideModal>
-            <SlideModalContents>
-              <SlideBtn />
-            </SlideModalContents>
-          </SlideModal>
-        </ModalWrapper>
-        {join ? (
+      {join ? (
+        <Modal>
           <ModalWrapper>
-            <LoginModal>
-              <ModalContents>
-                <Btn onClick={(modal) => setShowModal(!modal)}>&times;</Btn>
-                <Wrapper>
-                  <Img src={Logo} />
-                  <Email
-                    name="email"
-                    type="text"
-                    placeholder="이메일을 입력해주세요."
-                    value={email}
-                    onChange={(e) => emailChange(e)}
-                  />
-                  <Password
-                    name="password"
-                    type="password"
-                    placeholder="패스워드를 입력해주세요."
-                    value={password}
-                    onChange={(e) => passwordChange(e)}
-                  />
-                  <Password
-                    name="passwordAgain"
-                    type="password"
-                    placeholder="패스워드를 다시 한번 입력해주세요."
-                    value={passwordAgain}
-                    onChange={(e) => passwordAgainChange(e)}
-                  />
-                  <Name
-                    name="name"
-                    type="text"
-                    placeholder="닉네임을 입력해주세요."
-                    value={name}
-                    onChange={(e) => nameChange(e)}
-                  />
-                  <LoginBtn onClick={() => console.log({ email, password })}>
-                    회원가입
-                  </LoginBtn>
-                </Wrapper>
-              </ModalContents>
-            </LoginModal>
+            <SlideModal>
+              <SlideModalContents>
+                <SlideBtn />
+              </SlideModalContents>
+            </SlideModal>
           </ModalWrapper>
-        ) : (
           <ModalWrapper>
             <LoginModal ref={modalRef} onClick={closeModal}>
               <ModalContents>
@@ -124,38 +56,36 @@ const SignIn = ({ showModal, setShowModal }) => {
                   &times;
                 </Btn>
                 <Img src={Logo} />
-                <Email
-                  join={join}
+                <Email2
                   name="email"
                   type="text"
                   placeholder="이메일"
                   value={email}
                   onChange={(e) => emailChange(e)}
                 />
-                <Password
-                  join={join}
+                <Password2
                   name="password"
                   type="password"
                   placeholder="패스워드"
                   value={password}
                   onChange={(e) => passwordChange(e)}
                 />
-                <Link to="/">
-                  <LoginBtn
-                    onClick={() =>
-                      console.log({ email, password }, "Login request")
-                    }
-                  >
-                    로그인
-                  </LoginBtn>
-                </Link>
+                <LoginBtn
+                  onClick={() =>
+                    console.log({ email, password }, "Login request")
+                  }
+                >
+                  로그인
+                </LoginBtn>
                 <Line />
                 <JoinBtn onClick={() => setJoin(!join)}>회원가입</JoinBtn>
               </ModalContents>
             </LoginModal>
           </ModalWrapper>
-        )}
-      </Modal>
+        </Modal>
+      ) : (
+        <SignUp showModal={showModal} setShowModal={setShowModal} />
+      )}
     </>
   );
 };

@@ -4,9 +4,9 @@ export const Btn = Styled.button`
     position: absolute;
     top:0;
     right:0;
-    border-radius:3em;
     height:1.5em;
     width:1.5em;
+    border-radius:3em;
     font-size:2em;
     border:0;
     cursor:pointer;
@@ -73,6 +73,13 @@ export const Img = Styled.img`
   position: relative;
   bottom:0.3em;
   right:1.5em;
+`;
+export const Img2 = Styled(Img)`
+    width:1.5em;
+    position:relative;
+    left:8em;
+    bottom:1.5em;
+    overflow:visible;
 `;
 
 export const Wrapper = Styled.div`
