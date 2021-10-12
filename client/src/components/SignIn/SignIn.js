@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from "react";
-import { useHistory, Switch, Route, Link } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import axios from "axios";
 import SignUp from "../SignUp/SignUp";
 import {
@@ -8,7 +8,6 @@ import {
   SlideModal,
   SlideModalContents,
   LoginModal,
-  ContentWrapper,
   Btn,
   Img,
   ModalContents,
@@ -18,9 +17,7 @@ import {
   Email,
   Password,
   SlideImg,
-  CheckboxWrapper,
-  Checkbox,
-  AgreeWrapper,
+  ContentWrapper,
 } from "./SignIn.Styled";
 import Logo from "../../images/logo.svg";
 import Ad from "../../images/recommend.png";
@@ -136,24 +133,6 @@ const SignIn = ({
                   </JoinBtn>
                   {joinModal ? <SignUp /> : null}
                 </div>
-                <CheckboxWrapper>
-                  <AgreeWrapper>
-                    약관에 동의하시겠습니까? &nbsp;
-                    <Checkbox type="checkbox" />
-                  </AgreeWrapper>
-                </CheckboxWrapper>
-                <CheckboxWrapper>
-                  <AgreeWrapper>
-                    약관에 동의하시겠습니까? &nbsp;
-                    <Checkbox type="checkbox" />
-                  </AgreeWrapper>
-                </CheckboxWrapper>
-                <CheckboxWrapper>
-                  <AgreeWrapper>
-                    약관에 동의하시겠습니까? &nbsp;
-                    <Checkbox type="checkbox" />
-                  </AgreeWrapper>
-                </CheckboxWrapper>
               </ContentWrapper>
             </ModalContents>
           </LoginModal>

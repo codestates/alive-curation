@@ -58,7 +58,6 @@ export const SlideImg = Styled.img`
 `;
 
 export const SlideBtn = Styled.div`
-  border:solid;
   display: flex;
   width: 1em;
 `;
@@ -71,7 +70,6 @@ export const LoginModal = Styled.div`
 `;
 
 export const Close = Styled.span`
-  border:solid;
   font-size: 2em;
 `;
 
@@ -80,7 +78,7 @@ export const Img = Styled.img`
   width:8em;
   position: relative;
   right:3em;
-  top:1em;
+  bottom:1.5em;
 `;
 
 export const Wrapper = Styled.div`
@@ -93,7 +91,6 @@ export const Wrapper = Styled.div`
 `;
 
 export const ModalContents = Styled.div`
-  border:solid;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -109,14 +106,6 @@ export const ModalContents = Styled.div`
   flex-direction: column;
 `;
 
-export const ContentWrapper = Styled.div`
-  position:relative;
-  top:2em;
-  display: flex;
-  flex-direction:column;
-  align-items:center;
-  justify-content:center;
-`;
 export const Email = Styled.input`
   font-size: 0.5em;
   margin-top: 1em;
@@ -146,7 +135,7 @@ export const Name = Styled.input`
   margin-top: 1em;
   border-radius: 0.1em;
   width: 100%;
-  height: 3em;
+  height: 3.5em;
   border: 0.1em solid #e5e5e5;
   padding: 0.2em 0.8em;
   outline: none;
@@ -183,20 +172,14 @@ export const JoinBtn = Styled.button`
 
 export const Line = Styled.hr`
   color: #3f3f3f;
-  width: 85%;
+  width: 100%;
   margin-top:0.2em;
   margin-bottom:0.2em;
 `;
 
-export const CheckboxWrapper = Styled.div`
-  width:100%;
-`;
-
-export const Checkbox = Styled.input`
-`;
-
-export const AgreeWrapper = Styled.div`
-  text-align:center;
-  font-size:1em;
-
+export const ContentWrapper = Styled.div`
+  display: flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
 `;

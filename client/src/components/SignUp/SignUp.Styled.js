@@ -79,7 +79,7 @@ export const Img = Styled.img`
   width:8em;
   position: relative;
   right:3em;
-  bottom:0.5em;
+  bottom:1em;
 `;
 
 export const Wrapper = Styled.div`
@@ -110,7 +110,6 @@ export const ModalContents = Styled.div`
 export const TypeWrapper = Styled.div`
   width:100%;
   height:4.5vh;
-  /* border:solid; */
   position:relative;
   top:0.3em;
   margin-bottom:0.5em;
@@ -131,7 +130,7 @@ export const Email = Styled.input`
   margin-top: 0.5em;
   border-radius: 0.1em;
   width:100%;
-  height: 3em;
+  height: 3.5em;
   border: 0.1em solid #e5e5e5;
   padding: 0.2em 0.8em;
   outline: none;
@@ -143,7 +142,7 @@ export const Password = Styled.input`
   margin-top: 0.5em;
   border-radius: 0.1em;
   width:100%;
-  height: 3em;
+  height: 3.5em;
   border: 0.1em solid #e5e5e5;
   padding: 0.2em 0.8em;
   outline: none;
@@ -155,7 +154,7 @@ export const Name = Styled.input`
   margin-top: 0.5em;
   border-radius: 0.1em;
   width: 100%;
-  height: 3em;
+  height: 3.5em;
   border: 0.1em solid #e5e5e5;
   padding: 0.2em 0.8em;
   outline: none;
