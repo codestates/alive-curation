@@ -80,7 +80,7 @@ export const Img = Styled.img`
   width:8em;
   position: relative;
   right:3em;
-  top:1em;
+  bottom:1.5em;
 `;
 
 export const Wrapper = Styled.div`
@@ -93,7 +93,6 @@ export const Wrapper = Styled.div`
 `;
 
 export const ModalContents = Styled.div`
-  border:solid;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -109,24 +108,20 @@ export const ModalContents = Styled.div`
   flex-direction: column;
 `;
 
-export const ContentWrapper = Styled.div`
-  position:relative;
-  top:2em;
-  display: flex;
-  flex-direction:column;
-  align-items:center;
-  justify-content:center;
-`;
 export const Email = Styled.input`
   font-size: 0.5em;
   margin-top: 1em;
   border-radius: 0.1em;
   width:100%;
-  height: 3.5em;
+  height: 3em;
   border: 0.1em solid #e5e5e5;
   padding: 0.2em 0.8em;
   outline: none;
   box-sizing: border-box;
+`;
+
+export const Email2 = Styled(Email)`
+  width:80%;
 `;
 
 export const Password = Styled.input`
@@ -134,11 +129,16 @@ export const Password = Styled.input`
   margin-top: 1em;
   border-radius: 0.1em;
   width: 100%;
-  height: 3.5em;
+  height: 3em;
   border: 0.1em solid #e5e5e5;
   padding: 0.2em 0.8em;
   outline: none;
   box-sizing: border-box;
+`;
+
+export const Password2 = Styled(Password)`
+  margin-top: 1em;
+  width:80%;
 `;
 
 export const Name = Styled.input`
@@ -186,17 +186,4 @@ export const Line = Styled.hr`
   width: 85%;
   margin-top:0.2em;
   margin-bottom:0.2em;
-`;
-
-export const CheckboxWrapper = Styled.div`
-  width:100%;
-`;
-
-export const Checkbox = Styled.input`
-`;
-
-export const AgreeWrapper = Styled.div`
-  text-align:center;
-  font-size:1em;
-
 `;
