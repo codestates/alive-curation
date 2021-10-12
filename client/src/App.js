@@ -3,20 +3,33 @@ import { Route, Switch } from "react-router-dom";
 import "./App.css";
 import Landing from "./pages/Landing";
 import MyPage from "./pages/MyPage";
-
+import AdminWrite from "./pages/AdminWrite/AdminWrite";
 function App() {
   const [userInfo, setUserInfo] = useState([]);
+  const [isLogin, setIsLogin] = useState([]);
 
   return (
     <div className="App">
       <Switch>
-        {/* <Route>
-          <Landing exact path="/" component={Landing} />
-        </Route> */}
-        <Route>
-          <MyPage path="/mypage" component={MyPage} userInfo={userInfo} />
+        <Route exact path="/">
+          <Landing
+            isLogin={isLogin}
+            userInfo={userInfo}
+            setUserInfo={setUserInfo}
+            setIsLogin={setIsLogin}
+          />
         </Route>
-        <Route></Route>
+        <Route path="/write">
+          <AdminWrite />
+        </Route>
+        <Route path="/mypage">
+          <MyPage
+            userInfo={userInfo}
+            isLogin={isLogin}
+            setIsLogin={setIsLogin}
+            setUserInfo={setUserInfo}
+          />
+        </Route>
       </Switch>
     </div>
   );

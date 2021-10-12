@@ -18,6 +18,7 @@ export const ImgBox = Styled.div`
     width:10em;
     height:10em;
     border-radius : 70%;
+    margin-bottom:1em;
     overflow : hidden;
 `;
 
@@ -29,10 +30,9 @@ export const Img = Styled.img`
 
 export const DeleteButton = Styled.div`
     cursor : pointer;
-    border:solid;
     position: absolute;
+    margin-bottom:3em;
     bottom:0;
-    margin:4em;
 `;
 
 export const Text = Styled.div`
