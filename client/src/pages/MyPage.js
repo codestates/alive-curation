@@ -1,10 +1,11 @@
 import React from "react";
-import { Switch, Route } from "react-router-dom";
+import ModifyInfo from "../components/ModifyInfo/ModifyInfo";
 import SideBar from "../components/SideBar/SideBar";
-const MyPage = ({ userInfo }) => {
+const MyPage = ({ setUserInfo, setIsLogin }) => {
   return (
     <>
-      <SideBar />
+      <ModifyInfo />
+      <SideBar setUserInfo={setUserInfo} setIsLogin={setIsLogin} />
     </>
   );
 };

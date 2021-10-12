@@ -29,6 +29,8 @@ export const ModalWrapper = Styled.div`
   justify-content: center;
   align-items: center;
   height: 100vh;
+  position: relative;
+  right:2em;
 `;
 
 export const SlideModal = Styled.div`
@@ -37,20 +39,26 @@ export const SlideModal = Styled.div`
 `;
 
 export const SlideModalContents = Styled.div`
-  margin: 10em;
   display: flex;
-  justify-content: space-around;
+  align-items: center;
+  justify-content: center;
   height: 50vh;
   border-radius: 1em 0 0 1em;
-  background-color: white;
+  background-color: #e5f7ff;
   width: 100%;
   position: relative;
-  right: 2em;
-  padding: 0 1em 2em;
+  left : 8em;
   box-sizing: border-box;
+  overflow:hidden;
+`;
+
+export const SlideImg = Styled.img`
+  height:100%;
+  position: relative;
 `;
 
 export const SlideBtn = Styled.div`
+  border:solid;
   display: flex;
   width: 1em;
 `;
@@ -69,10 +77,10 @@ export const Close = Styled.span`
 
 export const Img = Styled.img`
   float:left;
-  font-size:1em;
+  width:8em;
   position: relative;
-  bottom:0.3em;
-  right:1.5em;
+  right:3em;
+  bottom:1.5em;
 `;
 
 export const Wrapper = Styled.div`
@@ -102,7 +110,7 @@ export const ModalContents = Styled.div`
 
 export const Email = Styled.input`
   font-size: 0.5em;
-  margin-top: 2em;
+  margin-top: 1em;
   border-radius: 0.1em;
   width:100%;
   height: 3em;
@@ -118,7 +126,7 @@ export const Email2 = Styled(Email)`
 
 export const Password = Styled.input`
   font-size: 0.5em;
-  margin-top: 0.8em;
+  margin-top: 1em;
   border-radius: 0.1em;
   width: 100%;
   height: 3em;
@@ -129,6 +137,7 @@ export const Password = Styled.input`
 `;
 
 export const Password2 = Styled(Password)`
+  margin-top: 1em;
   width:80%;
 `;
 
@@ -152,8 +161,8 @@ export const LoginBtn = Styled.button`
   background-color: #3f3f3f;
   color: white;
   line-height: 0.1em;
-  margin-top: 0.8em;
-  margin-bottom: 0.3em;
+  margin-top: 1em;
+  margin-bottom: 0.5em;
   border-radius: 0.2em;
   border-style: none;
 `;
@@ -166,7 +175,7 @@ export const JoinBtn = Styled.button`
   background-color: #fafafa;
   color: #3f3f3f;
   line-height: 0.1em;
-  margin-top: 0.3em;
+  margin-top: 0.5em;
   margin-bottom: 1em;
   border-radius: 0.2em;
   border-style: none;
@@ -175,4 +184,6 @@ export const JoinBtn = Styled.button`
 export const Line = Styled.hr`
   color: #3f3f3f;
   width: 85%;
+  margin-top:0.2em;
+  margin-bottom:0.2em;
 `;
