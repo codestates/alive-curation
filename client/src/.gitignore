@@ -3,3 +3,5 @@ node_modules
 cert.pem
 
 key.pem
+
+.vscode
