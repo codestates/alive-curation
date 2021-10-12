@@ -93,7 +93,6 @@ export const Wrapper = Styled.div`
 `;
 
 export const ModalContents = Styled.div`
-  border:solid;
   display: flex;
   justify-content: center;
   align-items: center;

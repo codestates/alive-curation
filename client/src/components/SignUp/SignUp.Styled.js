@@ -88,7 +88,7 @@ export const Wrapper = Styled.div`
   align-items:center;
   flex-direction:column;
   position: relative;
-  top:0.3em;
+  top:1.5em;
 `;
 
 export const ModalContents = Styled.div`

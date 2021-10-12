@@ -87,7 +87,7 @@ const SignIn = ({
                 />
                 <LoginBtn
                   onClick={() => {
-                    if (window.localStorage.getItem("userInfo") === null)
+                    if (!window.localStorage.getItem("userInfo"))
                       return axios
                         .post(
                           "https://localhost:8080/user/signin",
@@ -106,12 +106,16 @@ const SignIn = ({
                         .then((res) => {
                           if (res.status === 200) {
                             const { email, role, name, thumbnail } = res.data;
-                            window.localStorage.setItem("userInfo", {
+                            const userData = {
                               email,
                               role,
                               name,
                               thumbnail,
-                            });
+                            };
+                            window.localStorage.setItem(
+                              "userInfo",
+                              JSON.stringify(userData)
+                            );
                             setData(res.data);
                             setIsLogin(true);
                             history.push("/mypage");
@@ -136,24 +140,6 @@ const SignIn = ({
                   </JoinBtn>
                   {joinModal ? <SignUp /> : null}
                 </div>
-                <CheckboxWrapper>
-                  <AgreeWrapper>
-                    약관에 동의하시겠습니까? &nbsp;
-                    <Checkbox type="checkbox" />
-                  </AgreeWrapper>
-                </CheckboxWrapper>
-                <CheckboxWrapper>
-                  <AgreeWrapper>
-                    약관에 동의하시겠습니까? &nbsp;
-                    <Checkbox type="checkbox" />
-                  </AgreeWrapper>
-                </CheckboxWrapper>
-                <CheckboxWrapper>
-                  <AgreeWrapper>
-                    약관에 동의하시겠습니까? &nbsp;
-                    <Checkbox type="checkbox" />
-                  </AgreeWrapper>
-                </CheckboxWrapper>
               </ContentWrapper>
             </ModalContents>
           </LoginModal>
