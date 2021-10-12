@@ -26,7 +26,7 @@ if (dev) {
 	app.use(helmet())
 	app.use(cors({ origin: "site-url", credentials: true }))
 }
-
+app.disable('x-powered-by')
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 app.use(cookieParser(process.env.COOKIE_SECURE))
