@@ -37,7 +37,7 @@ const postsSchema = new Schema(
 postsSchema.methods.dateFormat = function() {
   return moment(this.createAt)
         .tz("Asia/Seoul")
-        .format('YYYY년 MM월 DD일, h:mm:ss a') // dateFormat 값을 포맷해서 리턴
+        .format('YYYY년 MM월 DD일, h:mm:ss a')
 }
 
 const Posts = mongoose.model('Posts', postsSchema);
