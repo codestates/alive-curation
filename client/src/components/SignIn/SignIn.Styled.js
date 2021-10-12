@@ -4,8 +4,13 @@ export const Btn = Styled.button`
     position: absolute;
     top:0;
     right:0;
-    width:2em;
-    font-size:1em;
+    border-radius:3em;
+    height:1.5em;
+    width:1.5em;
+    font-size:2em;
+    border:0;
+    cursor:pointer;
+    background: #e0e0e0;
 `;
 export const Modal = Styled.div`
   display: flex;
@@ -24,6 +29,8 @@ export const ModalWrapper = Styled.div`
   justify-content: center;
   align-items: center;
   height: 100vh;
+  position: relative;
+  right:2em;
 `;
 
 export const SlideModal = Styled.div`
@@ -32,20 +39,26 @@ export const SlideModal = Styled.div`
 `;
 
 export const SlideModalContents = Styled.div`
-  margin: 10em;
   display: flex;
-  justify-content: space-around;
+  align-items: center;
+  justify-content: center;
   height: 50vh;
   border-radius: 1em 0 0 1em;
-  background-color: white;
+  background-color: #e5f7ff;
   width: 100%;
   position: relative;
-  right: 2em;
-  padding: 0 1em 2em;
+  left : 8em;
   box-sizing: border-box;
+  overflow:hidden;
+`;
+
+export const SlideImg = Styled.img`
+  height:100%;
+  position: relative;
 `;
 
 export const SlideBtn = Styled.div`
+  border:solid;
   display: flex;
   width: 1em;
 `;
@@ -64,7 +77,10 @@ export const Close = Styled.span`
 
 export const Img = Styled.img`
   float:left;
-  font-size:2em;
+  width:8em;
+  position: relative;
+  right:3em;
+  bottom:1.5em;
 `;
 
 export const Wrapper = Styled.div`
@@ -94,21 +110,23 @@ export const ModalContents = Styled.div`
 
 export const Email = Styled.input`
   font-size: 0.5em;
-  margin-top: 2em;
+  margin-top: 1em;
   border-radius: 0.1em;
-  width: 100%;
+  width:100%;
   height: 3em;
   border: 0.1em solid #e5e5e5;
   padding: 0.2em 0.8em;
   outline: none;
   box-sizing: border-box;
+`;
 
-  
+export const Email2 = Styled(Email)`
+  width:80%;
 `;
 
 export const Password = Styled.input`
   font-size: 0.5em;
-  margin-top: 0.8em;
+  margin-top: 1em;
   border-radius: 0.1em;
   width: 100%;
   height: 3em;
@@ -116,6 +134,11 @@ export const Password = Styled.input`
   padding: 0.2em 0.8em;
   outline: none;
   box-sizing: border-box;
+`;
+
+export const Password2 = Styled(Password)`
+  margin-top: 1em;
+  width:80%;
 `;
 
 export const Name = Styled.input`
@@ -138,8 +161,8 @@ export const LoginBtn = Styled.button`
   background-color: #3f3f3f;
   color: white;
   line-height: 0.1em;
-  margin-top: 0.8em;
-  margin-bottom: 0.3em;
+  margin-top: 1em;
+  margin-bottom: 0.5em;
   border-radius: 0.2em;
   border-style: none;
 `;
@@ -152,7 +175,7 @@ export const JoinBtn = Styled.button`
   background-color: #fafafa;
   color: #3f3f3f;
   line-height: 0.1em;
-  margin-top: 0.3em;
+  margin-top: 0.5em;
   margin-bottom: 1em;
   border-radius: 0.2em;
   border-style: none;
@@ -161,4 +184,6 @@ export const JoinBtn = Styled.button`
 export const Line = Styled.hr`
   color: #3f3f3f;
   width: 85%;
+  margin-top:0.2em;
+  margin-bottom:0.2em;
 `;

@@ -1,7 +1,6 @@
 const mongoose = require('mongoose')
 const { Schema } = mongoose;
 const moment = require('moment-timezone')
-// const ObjectId = mongoose.Schema.Types.ObjectId
 
 const postsSchema = new Schema(
   {

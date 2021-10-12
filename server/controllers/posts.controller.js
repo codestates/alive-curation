@@ -18,7 +18,6 @@ module.exports = {
       if (duplicatedBook) {
         return res.status(400).json({ message : "book-already-exists" })
       }
-      // 포스트 모델이 객체형식으로 되어있어서 하나의 객체로 감싸서 보내줘야 함      
       await db.addPosts({ title, image, author, description, content })
       res.status(200).json({
         title, image, author, description, content,
