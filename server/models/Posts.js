@@ -1,27 +1,30 @@
 const mongoose = require('mongoose')
 const { Schema } = mongoose;
-const { Book } = require('./Book')
 const moment = require('moment-timezone')
+// const ObjectId = mongoose.Schema.Types.ObjectId
 
 const postsSchema = new Schema(
   {
-	  "posts_id": {
-      type: Number
-    },
-    "posts_title": {
+    "title": { 
       type: String,
-      required: [true, '책 제목을 입력하세요.'] 
+      required: [true, "책 제목을 입력하세요."]
+    },
+    "image": { 
+      type: String,
+      required: [true, "책 사진이 필요합니다."]
+    },
+    "author": { 
+      type: String,
+      required: [true, "작가를 입력하세요."]
+    },
+    "description": { 
+      type: String,
+      required: [true, "책 설명을 입력하세요."]
     },
     "content": {
       type: String,
-      required: [true, '추천 내용을 입력하세요.']
+      required: [true, "추천 내용을 입력하세요."]
     },
-    // "book": {
-    //   "id": Book.book_id,
-    //   "image": Book.image,
-    //   "title": Book.title,
-    //   "author": Book.author,
-    // },
     "created_at": {
       type: Date,
       default: Date.now()
