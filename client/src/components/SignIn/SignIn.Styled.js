@@ -58,7 +58,6 @@ export const SlideImg = Styled.img`
 `;
 
 export const SlideBtn = Styled.div`
-  border:solid;
   display: flex;
   width: 1em;
 `;
@@ -71,7 +70,6 @@ export const LoginModal = Styled.div`
 `;
 
 export const Close = Styled.span`
-  border:solid;
   font-size: 2em;
 `;
 
@@ -113,15 +111,11 @@ export const Email = Styled.input`
   margin-top: 1em;
   border-radius: 0.1em;
   width:100%;
-  height: 3em;
+  height: 3.5em;
   border: 0.1em solid #e5e5e5;
   padding: 0.2em 0.8em;
   outline: none;
   box-sizing: border-box;
-`;
-
-export const Email2 = Styled(Email)`
-  width:80%;
 `;
 
 export const Password = Styled.input`
@@ -129,16 +123,11 @@ export const Password = Styled.input`
   margin-top: 1em;
   border-radius: 0.1em;
   width: 100%;
-  height: 3em;
+  height: 3.5em;
   border: 0.1em solid #e5e5e5;
   padding: 0.2em 0.8em;
   outline: none;
   box-sizing: border-box;
-`;
-
-export const Password2 = Styled(Password)`
-  margin-top: 1em;
-  width:80%;
 `;
 
 export const Name = Styled.input`
@@ -146,7 +135,7 @@ export const Name = Styled.input`
   margin-top: 1em;
   border-radius: 0.1em;
   width: 100%;
-  height: 3em;
+  height: 3.5em;
   border: 0.1em solid #e5e5e5;
   padding: 0.2em 0.8em;
   outline: none;
@@ -183,7 +172,14 @@ export const JoinBtn = Styled.button`
 
 export const Line = Styled.hr`
   color: #3f3f3f;
-  width: 85%;
+  width: 100%;
   margin-top:0.2em;
   margin-bottom:0.2em;
+`;
+
+export const ContentWrapper = Styled.div`
+  display: flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
 `;
