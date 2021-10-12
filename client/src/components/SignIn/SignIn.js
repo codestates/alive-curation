@@ -102,8 +102,7 @@ const SignIn = ({
                       .then((res) => {
                         if (res.status === 200) {
                           window.localStorage.setItem(
-                            "userInfo",
-                            JSON.stringify(res.data)
+                            "userInfo"
                           );
                           setData(res.data);
                           setIsLogin(true);
