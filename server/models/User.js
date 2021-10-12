@@ -24,7 +24,7 @@ const userSchema = mongoose.Schema({
 	thumbnail: {
 		type: String,
 		default: "https://www.svgrepo.com/show/106358/avatar.svg",
-	}
+	},
 })
 
 userSchema.pre("save", async function (next) {
