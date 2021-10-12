@@ -14,13 +14,12 @@ const config = {
 const verify = async (jwtPayload, done) => {
 	try {
 		const user = await db.getUserById(jwtPayload._id)
-
 		if (!user) {
 			return done(null, false)
 		}
 
-		const { _id, name, email } = user
-		return done(null, { _id, name, email })
+		const { _id, name, email, role } = user
+		return done(null, { _id, name, email, role })
 	} catch (err) {
 		return done(err)
 	}
