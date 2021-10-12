@@ -2,8 +2,7 @@ const mongoose = require('mongoose')
 const { Schema } = mongoose;
 const moment = require('moment-timezone')
 
-const postsSchema = new Schema(
-  {
+const postsSchema = new Schema({
     "title": { 
       type: String,
       required: [true, "책 제목을 입력하세요."]
@@ -32,7 +31,7 @@ const postsSchema = new Schema(
       type: Date,
       default: Date.now,
     }
-  });
+});
 
 postsSchema.methods.dateFormat = function() {
   return moment(this.createAt)
