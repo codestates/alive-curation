@@ -4,13 +4,16 @@
 	"main": "app.js",
 	"scripts": {
 		"lint": "eslint app.js lib models routes controllers",
-		"start:dev": "nodemon app.js"
+		"start": "cross-env NODE_ENV=production node app.js",
+		"start:dev": "nodemon app.js",
+		"test": "cross-env NODE_ENV=test jest --forceExit"
 	},
 	"license": "ISC",
 	"dependencies": {
 		"bcrypt": "^5.0.1",
 		"cookie-parser": "^1.4.5",
 		"cors": "^2.8.5",
+		"cross-env": "^7.0.3",
 		"dotenv": "^10.0.0",
 		"express": "^4.17.1",
 		"helmet": "^4.6.0",
@@ -25,6 +28,9 @@
 	},
 	"devDependencies": {
 		"eslint": "^5.16.0",
-		"nodemon": "^2.0.13"
+		"jest": "^27.2.5",
+		"node-mocks-http": "^1.11.0",
+		"nodemon": "^2.0.13",
+		"supertest": "^6.1.6"
 	}
 }

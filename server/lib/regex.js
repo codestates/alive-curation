@@ -7,22 +7,24 @@ const nameValidation = /^[\w\Wㄱ-ㅎㅏ-ㅣ가-힣]{2,20}$/
 const emailRegex = (email) => emailValidation.test(email)
 const passwordRegex = (password) => passwordValidation.test(password)
 const nameRegex = (name) => nameValidation.test(name)
+const validator = (email, password, name) => {
+	if (!email || !emailRegex(email)) {
+		return { code: 400, message: "invalid-email" }
+	}
+
+	if (!password || !passwordRegex(password)) {
+		return { code: 400, message: "invalid-password" }
+	}
+
+	if (!name || !nameRegex(name)) {
+		return { code: 400, message: "invalid-name" }
+	}
+	return false
+}
 
 module.exports = {
 	emailRegex,
 	passwordRegex,
 	nameRegex,
-	validator: (email, password, name) => {
-		if (!email || !emailRegex(email)) {
-			return { code: 400, message: "invalid-email" }
-		}
-
-		if (!password || !passwordRegex(password)) {
-			return { code: 400, message: "invalid-password" }
-		}
-
-		if (!name || !nameRegex(name)) {
-			return { code: 400, message: "invalid-name" }
-		}
-	},
+	validator
 }

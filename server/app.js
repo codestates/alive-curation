@@ -43,13 +43,17 @@ app.get("/", (req, res) => {
 
 const PORT = dev ? 8080 : process.env.PORT
 
+let server
+
 if (fs.existsSync("./key.pem") && fs.existsSync("./cert.pem")) {
 	const privateKey = fs.readFileSync(__dirname + "/key.pem", "utf8")
 	const certificate = fs.readFileSync(__dirname + "/cert.pem", "utf8")
 	const credentials = { key: privateKey, cert: certificate }
 
-	const server = https.createServer(credentials, app)
+	server = https.createServer(credentials, app)
 	server.listen(PORT, () => console.log(`https sever is ready on port: ${PORT}, terminate to Control + C.`))
 } else {
-	app.listen(PORT, () => console.log(`http sever is ready on port: ${PORT}, terminate to Control + C.`))
+	server = app.listen(PORT, () => console.log(`http sever is ready on port: ${PORT}, terminate to Control + C.`))
 }
+
+module.exports = server
