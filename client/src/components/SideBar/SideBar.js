@@ -10,54 +10,41 @@ import {
   TextBig,
   DeleteButton,
 } from "./SideBar.Styled";
-import gromit from "../../images/gromit.jpeg";
-const SideBar = ({ setUserInfo, setIsLogin }) => {
+const SideBar = ({ userInfo, setUserInfo }) => {
+  const headerOptions = {
+    headers: {
+      "Content-Type": "application/json",
+      Accept: "application/json",
+    },
+    withCredentials: true,
+  };
   const history = useHistory();
   const logoutHandler = () => {
-    axios
-      .post(
-        "https://localhost:8080/user/signout",
-        {},
-        {
-          headers: {
-            "Content-Type": "application/json",
-            Accept: "application/json",
-          },
-          withCredentials: true,
-        }
-      )
+    return axios
+      .post("https://localhost:8080/user/signout", {}, headerOptions)
       .then((res) => {
-        window.localStorage.removeItem("userInfo");
-        setIsLogin(false);
+        window.localStorage.removeItem("user");
         setUserInfo({});
         history.push("/");
-      });
+      })
+      .catch(({ response }) => console.log(response.data));
   };
 
   const deleteUser = () => {
     axios
-      .delete(
-        "https://localhost:8080/user",
-        {},
-        {
-          headers: {
-            "Content-Type": "application/json",
-            Accept: "application/json",
-          },
-          withCredentials: true,
-        }
-      )
-      .then((res) => console.log(res));
+      .delete("https://localhost:8080/user", {}, headerOptions)
+      .then((res) => console.log(res))
+      .catch(({ response }) => console.log(response.data));
   };
   return (
     <>
       <Navbar>
         <Link to="/">
           <ImgBox>
-            <Img src={gromit} alt="no pictures" />
+            <Img src={userInfo.thumbnail} alt="no pictures" />
           </ImgBox>
         </Link>
-        <Text>그로밋님</Text>
+        <Text>{userInfo.name}</Text>
         <TextBold>나의 도서</TextBold>
         <TextBig>46</TextBig>
         <TextBold>나의 큐레이터</TextBold>
@@ -65,7 +52,7 @@ const SideBar = ({ setUserInfo, setIsLogin }) => {
         <div>
           <button onClick={logoutHandler}>로그아웃</button>
         </div>
-        <DeleteButton onClick={() => deleteUser()}>회원탈퇴</DeleteButton>
+        <DeleteButton onClick={deleteUser}>회원탈퇴</DeleteButton>
       </Navbar>
     </>
   );

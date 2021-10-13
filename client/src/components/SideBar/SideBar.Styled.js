@@ -1,7 +1,7 @@
 import Styled from "styled-components";
 
 export const Navbar = Styled.div`
-    border:solid;
+    border: 0.5px solid #c4c4c4;
     border-width:thin;
     position: absolute;
     bottom:0;
@@ -15,8 +15,8 @@ export const Navbar = Styled.div`
 `;
 
 export const ImgBox = Styled.div`
-    width:10em;
-    height:10em;
+    width:8em;
+    height:8em;
     border-radius : 70%;
     margin-bottom:1em;
     overflow : hidden;

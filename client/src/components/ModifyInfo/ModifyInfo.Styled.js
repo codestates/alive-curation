@@ -14,7 +14,7 @@ export const Container = Styled.div`
 export const Background = Styled.div`
     height:29vh;
     width:85vw;
-    background-color:#EDDABF ;
+    background-color:#e57373 ;
     position: relative;
     top:10vh;
 `;
@@ -29,9 +29,9 @@ export const FormWrapper = Styled.div`
 `;
 
 export const Form = Styled.div`
-    font-size:2em;
+    font-size:1.5em;
     position:relative;
-    /* top:4em; */
+    top:1em;
     /* right:7em; */
     width:50%;
     height:11em;
@@ -54,7 +54,7 @@ export const NameWrapper = Styled.div`
 export const ImgWrapper = Styled.div`
     position:relative;
     right:6em;
-    bottom:2.1em;
+    bottom:3em;
     height:5em;
 `;
 
@@ -66,22 +66,23 @@ export const Img = Styled.img`
 export const Name = Styled.div`
     font-size:1em;
     position: relative;
-    right:1.7em;
+    right:1em;
     bottom:1.5em;
     margin-right:1em;
 `;
 
 export const Auth = Styled.div`
-    font-size:0.5em;
+    font-size:0.7em;
     position: relative;
-    right:3.5em;
+    right:1em;
     top:0.5em;
 `;
 
 export const Input = Styled.input`
-    width:82%;
-    height:3em;
-    margin-top:0.5em;
+    /* width:82%; */
+    font-size:0.9em;
+    /* height:3em; */
+    /* margin-top:0.5em; */
 `;
 
 export const InputWrapper = Styled.div`
@@ -101,6 +102,9 @@ export const Div = Styled.div`
     bottom:1.4em;
 `;
 
+export const Div2 = Styled.div`
+font-size:20px;
+`;
 export const BtnWrapper = Styled.div`
     display: flex;
     flex-direction:row-reverse;

@@ -128,7 +128,7 @@ export const Img2 = Styled(Img)`
 export const Email = Styled.input`
   font-size: 0.5em;
   margin-top: 0.5em;
-  border-radius: 0.1em;
+  border-radius: 0.5em;
   width:100%;
   height: 3.5em;
   border: 0.1em solid #e5e5e5;
@@ -208,7 +208,7 @@ export const Line = Styled.hr`
 
 export const Warning = Styled.div`
   font-size:0.1em;
-  color:red;
+  color:#d50000;
   float:left;
 `;
 

@@ -23,7 +23,7 @@ import {
 } from "./SignUp.Styled";
 import Logo from "../../images/logo.svg";
 import Book from "../../images/book.png";
-const SignUp = ({ userInfo, setJoinModal }) => {
+const SignUp = ({ isLogin, userInfo, setJoinModal }) => {
   const [passEmail, setPassEmail] = useState(false);
   const [passPassword, setPassPassword] = useState(false);
   const [passPasswordCheck, setPassPasswordCheck] = useState(false);
@@ -36,6 +36,13 @@ const SignUp = ({ userInfo, setJoinModal }) => {
   const [isJoin, setIsJoin] = useState(false);
   let history = useHistory();
   const modalRef = useRef();
+  const headerOptions = {
+    headers: {
+      "Content-Type": "application/json",
+      Accept: "application/json",
+    },
+    withCredentials: true,
+  };
   const closeJoinModal = (e) => {
     if (modalRef.current === e.target) {
       setJoinModal(false);
@@ -197,13 +204,7 @@ const SignUp = ({ userInfo, setJoinModal }) => {
                         email,
                         password,
                       },
-                      {
-                        headers: {
-                          "Content-Type": "application/json",
-                          Accept: "application/json",
-                        },
-                        withCredentials: true,
-                      }
+                      headerOptions
                     )
                     .then((res) => {
                       if (res.status === 201) {

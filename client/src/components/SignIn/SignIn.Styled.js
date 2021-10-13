@@ -5,12 +5,13 @@ export const Btn = Styled.button`
     top:0;
     right:0;
     border-radius:3em;
-    height:1.5em;
-    width:1.5em;
-    font-size:2em;
+    height:2em;
+    width:2em;
+    font-size:1.5em;
     border:0;
     cursor:pointer;
-    background: #e0e0e0;
+    background: white;
+    color:#b4b4b4;
 `;
 export const Modal = Styled.div`
   display: flex;
@@ -78,7 +79,7 @@ export const Img = Styled.img`
   width:8em;
   position: relative;
   right:3em;
-  bottom:1.5em;
+  bottom:0.6em;
 `;
 
 export const Wrapper = Styled.div`
@@ -96,7 +97,7 @@ export const ModalContents = Styled.div`
   align-items: center;
   height: 50vh;
   border-radius: 0 1em 1em 0;
-  background-color: #e0e0e0;
+  /* background-color: #e0e0e0; */
   width: 100%;
   position: relative;
   padding: 0 1em 2em;
@@ -105,14 +106,14 @@ export const ModalContents = Styled.div`
   justify-content: center;
   flex-direction: column;
 `;
-
+// 유효성검사 실패 -> 0.2em solid e53935
 export const Email = Styled.input`
   font-size: 0.5em;
   margin-top: 1em;
-  border-radius: 0.1em;
+  border-radius: 0.5em;
   width:100%;
   height: 3.5em;
-  border: 0.1em solid #e5e5e5;
+  border: 0.2em solid #e53935;
   padding: 0.2em 0.8em;
   outline: none;
   box-sizing: border-box;
@@ -121,10 +122,10 @@ export const Email = Styled.input`
 export const Password = Styled.input`
   font-size: 0.5em;
   margin-top: 1em;
-  border-radius: 0.1em;
+  border-radius: 0.5em;
   width: 100%;
   height: 3.5em;
-  border: 0.1em solid #e5e5e5;
+  border: 0.1em solid #b4b4b4;
   padding: 0.2em 0.8em;
   outline: none;
   box-sizing: border-box;
@@ -167,19 +168,22 @@ export const JoinBtn = Styled.button`
   margin-top: 0.5em;
   margin-bottom: 1em;
   border-radius: 0.2em;
-  border-style: none;
+  border:0.5px solid #c4c4c4;
 `;
 
 export const Line = Styled.hr`
-  color: #3f3f3f;
+  border-top: 1px solid #c4c4c4;
   width: 100%;
   margin-top:0.2em;
   margin-bottom:0.2em;
 `;
 
 export const ContentWrapper = Styled.div`
+  /* border:solid; */
   display: flex;
   flex-direction:column;
   justify-content:center;
   align-items:center;
+  position:relative;
+  top:1em;
 `;

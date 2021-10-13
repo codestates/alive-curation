@@ -21,29 +21,32 @@ import {
 } from "./SignIn.Styled";
 import Logo from "../../images/logo.svg";
 import Ad from "../../images/recommend.png";
-axios.defaults.withCredentials = true;
+// axios.defaults.withCredentials = true;
 const SignIn = ({
-  setIsLogin,
-  setUserInfo,
+  userInfo,
   showModal,
   setShowModal,
   joinModal,
   setJoinModal,
+  getDataHandler,
 }) => {
+  const headerOptions = {
+    headers: {
+      "Content-Type": "application/json",
+      Accept: "application/json",
+    },
+    withCredentials: true,
+  };
   const modalRef = useRef();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [data, setData] = useState({});
   let history = useHistory();
-  useEffect(() => {
-    setUserInfo(data);
-  }, [data]);
+
   const closeModal = (e) => {
     if (modalRef.current === e.target) {
       setShowModal(false);
     }
   };
-  if (!showModal) return null;
 
   const emailChange = (e) => {
     setEmail(e.target.value);
@@ -66,8 +69,8 @@ const SignIn = ({
           <LoginModal ref={modalRef} onClick={closeModal}>
             <ModalContents>
               <Btn onClick={() => setShowModal((modal) => !modal)}>&times;</Btn>
-              <Img src={Logo} />
               <ContentWrapper>
+                <Img src={Logo} />
                 <Email
                   name="email"
                   type="text"
@@ -84,38 +87,26 @@ const SignIn = ({
                 />
                 <LoginBtn
                   onClick={() => {
-                    if (window.localStorage.getItem("userInfo") === null)
-                      return axios
-                        .post(
-                          "https://localhost:8080/user/signin",
-                          {
-                            email,
-                            password,
-                          },
-                          {
-                            headers: {
-                              "Content-Type": "application/json",
-                              Accept: "application/json",
-                            },
-                            withCredentials: true,
-                          }
-                        )
-                        .then((res) => {
-                          if (res.status === 200) {
-                            const { email, role, name, thumbnail } = res.data;
-                            window.localStorage.setItem("userInfo", {
-                              email,
-                              role,
-                              name,
-                              thumbnail,
-                            });
-                            setData(res.data);
-                            setIsLogin(true);
-                            history.push("/mypage");
-                          } else if (res.status === 400) {
-                            setIsLogin(false);
-                          }
-                        });
+                    return axios
+                      .post(
+                        "https://localhost:8080/user/signin",
+                        {
+                          email,
+                          password,
+                        },
+                        headerOptions
+                      )
+                      .then((res) => {
+                        window.localStorage.setItem(
+                          "user",
+                          JSON.stringify(res.data)
+                        );
+                        getDataHandler(res.data);
+                        history.push("/mypage");
+                      })
+                      .catch(() => {
+                        console.log("error");
+                      });
                   }}
                 >
                   로그인
@@ -125,13 +116,12 @@ const SignIn = ({
                   <JoinBtn
                     onClick={() => {
                       setShowModal(false);
-                      setIsLogin(true);
                       setJoinModal(true);
                     }}
                   >
                     회원가입
                   </JoinBtn>
-                  {joinModal ? <SignUp /> : null}
+                  {joinModal ? <SignUp userInfo={userInfo} /> : null}
                 </div>
               </ContentWrapper>
             </ModalContents>

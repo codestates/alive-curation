@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import {
   Background,
   Container,
@@ -12,11 +12,45 @@ import {
   Img,
   ImgWrapper,
   Div,
+  Div2,
   Btn,
   BtnWrapper,
 } from "./ModifyInfo.Styled";
-import Profile from "../../images/gromit.jpeg";
-const ModifyInfo = () => {
+import axios from "axios";
+// axios.defaults.withCredentials = true;
+const ModifyInfo = ({ userInfo, setUserInfo, changeDataHandler }) => {
+  const headerOptions = {
+    headers: {
+      "Content-Type": "application/json",
+      Accept: "application/json",
+    },
+    withCredentials: true,
+  };
+  const [name, setName] = useState("");
+  const [password, setPassword] = useState("");
+  const [passwordCheck, setPasswordCheck] = useState("");
+  const [presentPassword, setPresentPassword] = useState("");
+  useEffect(() => {
+    console.log(userInfo);
+    setUserInfo(JSON.parse(window.localStorage.getItem("user")));
+  }, []);
+
+  const modifyHandler = () => {
+    if (password === passwordCheck) {
+      return axios
+        .patch(
+          "https://localhost:8080/user",
+          { email: userInfo.email, name, password },
+          headerOptions
+        )
+        .then((res) => {
+          changeDataHandler({ name });
+        })
+        .catch(({ response }) => console.log(response.data));
+    } else {
+      console.log("비밀번호를 다시 확인해주세요");
+    }
+  };
   return (
     <>
       <Background />
@@ -24,21 +58,38 @@ const ModifyInfo = () => {
         <FormWrapper>
           <Form>
             <ImgWrapper>
-              <Img src={Profile} />
+              <Img src={userInfo.thumbnail} />
             </ImgWrapper>
             <NameWrapper>
-              <Name>그로밋</Name>
-              <Auth>일반회원</Auth>
+              <Name>{userInfo.name}</Name>
+              <Auth>{userInfo.role === "user" ? "일반유저" : "운영자"}</Auth>
             </NameWrapper>
             <InputWrapper>
-              <Input name="name" type="text" />
-              <Div>이름</Div>
-              <Input name="email" type="text" />
+              <Div2>{userInfo.email}</Div2>
               <Div>이메일</Div>
-              <Input name="password" type="password" />
-              <Div>비밀번호</Div>
+              <Input
+                name="password"
+                type="password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+              />
+              <Div>변경할 비밀번호</Div>
+              <Input
+                name="password"
+                type="password"
+                value={passwordCheck}
+                onChange={(e) => setPasswordCheck(e.target.value)}
+              />
+              <Div>비밀번호 확인</Div>
+              <Input
+                name="password"
+                type="password"
+                value={passwordCheck}
+                onChange={(e) => setPresentPassword(e.target.value)}
+              />
+              <Div>현재 비밀번호</Div>
               <BtnWrapper>
-                <Btn>변경하기</Btn>
+                <Btn onClick={modifyHandler}>변경하기</Btn>
               </BtnWrapper>
             </InputWrapper>
           </Form>
