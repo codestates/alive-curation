@@ -1,6 +1,6 @@
 const jwt = require("jsonwebtoken")
 const passport = require("passport")
-const { validator } = require("../lib/regex")
+const { validator, passwordRegex } = require("../lib/regex")
 const bcrypt = require("bcrypt")
 const db = require("../db")
 require("dotenv").config()
@@ -17,12 +17,12 @@ module.exports = {
 
 			const userByEmail = await db.getUserByEmail(email)
 			if (userByEmail) {
-				return res.status(400).send({ email, message: "email-aready-exists" })
+				return res.status(409).send({ email, message: "email-aready-exists" })
 			}
 
 			const userByName = await db.getUserByName(name)
 			if (userByName) {
-				return res.status(400).send({ name, message: "name-aready-exists" })
+				return res.status(409).send({ name, message: "name-aready-exists" })
 			}
 
 			await db.addUser({ email, name, password })
@@ -62,53 +62,29 @@ module.exports = {
 		return res.status(200).json({ message: "logout-successfully" })
 	},
 	auth: async (req, res) => {
-		const userInfo = req.userInfo
+		const { userInfo } = req
 		const { thumbnail } = await db.getUserById(userInfo._id)
 		const role = userInfo.role ? "admin" : "user"
 
 		return res.status(200).json({ ...userInfo, thumbnail, role, message: "get-userinfo-successfully" })
 	},
-	isPasswordValid: async (req, res) => {
-		const user = await db.getUserById(req.userInfo._id)
-		const { password } = req.body
-
-		const isMatch = await bcrypt.compare(password, user.password)
-		if (!isMatch) {
-			return res.status(401).json({ message: "invalid-password" })
-		}
-		res.status(200).json({ message: "password-matches" })
-	},
 	patchUser: async (req, res) => {
-		const { email, name, password } = req.body
+		const { changePassword } = req.body
+		const { _id, password } = await db.getUserByName(req.userInfo.name)
 
-		const isInvalid = validator(email, password, name)
-		if (isInvalid) {
-			return res.status(isInvalid.code).json({ message: isInvalid.message })
+		if (!changePassword || !passwordRegex(changePassword)) {
+			return res.status(400).json({ message: "invalid-change-password" })
 		}
 
-		if (req.userInfo.email !== email) {
-			const userByEmail = await db.getUserByEmail(email)
-			if (userByEmail) {
-				return res.status(400).send({ email, message: "email-aready-exists" })
-			}
+		const isMatch = await bcrypt.compare(changePassword, password)
+
+		if (isMatch) {
+			return res.status(409).json({ message: "same-password" })
 		}
 
-		if (req.userInfo.name !== name) {
-			const userByName = await db.getUserByName(name)
-			if (userByName) {
-				return res.status(400).send({ name, message: "name-aready-exists" })
-			}
-		}
-		const hashedPasssword = await bcrypt.hash(password, 12)
-		await db.updateUser(req.userInfo._id, email, hashedPasssword, name)
-		const token = await jwt.sign(
-			{ _id: req.userInfo._id, name, email, role: req.userInfo.role },
-			process.env.JWT_SECRET,
-			{
-				expiresIn: "30m",
-			}
-		)
-		res.cookie("jwt", token, { httpOnly: true, sameSite: "None", secure: true })
-		res.status(200).send({ name, email, message: "patch-successfully" })
+		const hashedPasssword = await bcrypt.hash(changePassword, 12)
+		await db.updatePassword(_id, hashedPasssword)
+
+		res.status(200).json({ message: "patch-successfully" })
 	},
 }
