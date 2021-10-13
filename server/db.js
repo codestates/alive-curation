@@ -64,5 +64,4 @@ module.exports = {
 	getPostById: async (id) => Posts.findOne({ id }),
 	editPosts: async (id, content) => Posts.updateOne({ id }, { $set: { content } }),
 	deletePosts: async (id) => Posts.deleteOne({ id }),
-	deleteAll: async () => Posts.remove({}),
 }
