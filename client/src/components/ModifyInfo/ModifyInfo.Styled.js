@@ -14,7 +14,7 @@ export const Container = Styled.div`
 export const Background = Styled.div`
     height:29vh;
     width:85vw;
-    background-color:#e57373 ;
+    background-color:#af4448;
     position: relative;
     top:10vh;
 `;
