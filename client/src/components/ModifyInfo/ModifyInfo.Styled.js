@@ -2,6 +2,7 @@ import Styled from "styled-components";
 
 export const Container = Styled.div`
     position: absolute;
+    
     bottom:0;
     left :0;
     height:90vh;
@@ -14,24 +15,25 @@ export const Container = Styled.div`
 export const Background = Styled.div`
     height:29vh;
     width:85vw;
-    background-color:#e57373 ;
+    background-color:#9e9e9e;
     position: relative;
     top:10vh;
 `;
 
 export const FormWrapper = Styled.div`
     display: flex;
+    background: #f5f5f5;
     justify-content:center;
     align-items:center;
     width:100%;
+    height:67%;
     position:relative;
-    top:6em;
+    top:7em;
 `;
 
 export const Form = Styled.div`
     font-size:1.5em;
     position:relative;
-    top:1em;
     /* right:7em; */
     width:50%;
     height:11em;
@@ -47,7 +49,7 @@ export const NameWrapper = Styled.div`
     justify-content:center;
     align-items:center;
     position: relative;
-    bottom:3.5em;
+    bottom:3.7em;
     left:3em;
 `;
 
@@ -115,5 +117,6 @@ export const Btn = Styled.button`
     cursor:pointer;
     width:4em;
     font-size:1em;
-
+    position: relative;
+    left:2em;
 `;

@@ -33,7 +33,7 @@ const SideBar = ({ userInfo, setUserInfo }) => {
   const deleteUser = () => {
     axios
       .delete("https://localhost:8080/user", {}, headerOptions)
-      .then((res) => console.log(res))
+      .then((res) => window.localStorage.removeItem("user"))
       .catch(({ response }) => console.log(response.data));
   };
   return (

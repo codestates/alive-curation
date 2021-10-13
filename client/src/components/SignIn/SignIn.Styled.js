@@ -10,7 +10,7 @@ export const Btn = Styled.button`
     font-size:1.5em;
     border:0;
     cursor:pointer;
-    background: white;
+    background: #fafafa;
     color:#b4b4b4;
 `;
 export const Modal = Styled.div`
@@ -97,7 +97,7 @@ export const ModalContents = Styled.div`
   align-items: center;
   height: 50vh;
   border-radius: 0 1em 1em 0;
-  /* background-color: #e0e0e0; */
+  background-color: #fafafa;
   width: 100%;
   position: relative;
   padding: 0 1em 2em;
@@ -113,31 +113,21 @@ export const Email = Styled.input`
   border-radius: 0.5em;
   width:100%;
   height: 3.5em;
-  border: 0.2em solid #e53935;
+  border: ${(props) =>
+    props.failEmail ? `0.2em solid #e53935` : `0.1em solid #b4b4b4`};
   padding: 0.2em 0.8em;
   outline: none;
   box-sizing: border-box;
 `;
 
 export const Password = Styled.input`
+  border: ${(props) =>
+    props.failPassword ? `0.2em solid #e53935` : `0.1em solid #b4b4b4`};
   font-size: 0.5em;
   margin-top: 1em;
   border-radius: 0.5em;
   width: 100%;
   height: 3.5em;
-  border: 0.1em solid #b4b4b4;
-  padding: 0.2em 0.8em;
-  outline: none;
-  box-sizing: border-box;
-`;
-
-export const Name = Styled.input`
-  font-size: 0.5em;
-  margin-top: 1em;
-  border-radius: 0.1em;
-  width: 100%;
-  height: 3.5em;
-  border: 0.1em solid #e5e5e5;
   padding: 0.2em 0.8em;
   outline: none;
   box-sizing: border-box;
