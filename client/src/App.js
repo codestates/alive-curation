@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Route, Switch } from "react-router-dom";
 import "./App.css";
 import Landing from "./pages/Landing";
@@ -6,17 +6,23 @@ import MyPage from "./pages/MyPage";
 import AdminWrite from "./pages/AdminWrite/AdminWrite";
 function App() {
   const [userInfo, setUserInfo] = useState([]);
-  const [isLogin, setIsLogin] = useState([]);
+
+  const getDataHandler = (data) => {
+    setUserInfo(data);
+  };
+
+  const changeDataHandler = ({ name }) => {
+    setUserInfo({ ...userInfo, name });
+  };
 
   return (
     <div className="App">
       <Switch>
         <Route exact path="/">
           <Landing
-            isLogin={isLogin}
             userInfo={userInfo}
             setUserInfo={setUserInfo}
-            setIsLogin={setIsLogin}
+            getDataHandler={getDataHandler}
           />
         </Route>
         <Route path="/write">
@@ -25,9 +31,8 @@ function App() {
         <Route path="/mypage">
           <MyPage
             userInfo={userInfo}
-            isLogin={isLogin}
-            setIsLogin={setIsLogin}
             setUserInfo={setUserInfo}
+            changeDataHandler={changeDataHandler}
           />
         </Route>
       </Switch>

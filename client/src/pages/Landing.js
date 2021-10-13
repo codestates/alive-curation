@@ -1,9 +1,16 @@
 import React, { useState } from "react";
+import axios from "axios";
 import { useHistory, Link } from "react-router-dom";
 import SignIn from "../components/SignIn/SignIn";
 import SignUp from "../components/SignUp/SignUp";
-const Landing = ({ isLogin, userInfo, setUserInfo, setIsLogin }) => {
-  console.log(isLogin);
+const Landing = ({ userInfo, setUserInfo, setIsLogin, getDataHandler }) => {
+  const headerOptions = {
+    headers: {
+      "Content-Type": "application/json",
+      Accept: "application/json",
+    },
+    withCredentials: true,
+  };
   console.log(userInfo);
   const history = useHistory();
   const [showModal, setShowModal] = useState(false);
@@ -14,9 +21,23 @@ const Landing = ({ isLogin, userInfo, setUserInfo, setIsLogin }) => {
   const activeJoinModal = () => {
     setJoinModal((open) => !open);
   };
-
+  const logoutHandler = () => {
+    axios
+      .post("https://localhost:8080/user/signout", {}, headerOptions)
+      .then((res) => {
+        if (Object.keys(userInfo).length === 0) {
+          window.localStorage.clear();
+          history.push("/");
+        } else {
+          window.localStorage.removeItem("user");
+          setUserInfo({});
+          history.push("/");
+        }
+      })
+      .catch(({ response }) => console.log(response));
+  };
   const myPageHandler = () => {
-    window.localStorage.getItem("userInfo")
+    window.localStorage.getItem("user")
       ? history.push("/mypage")
       : history.push("/");
   };
@@ -29,7 +50,8 @@ const Landing = ({ isLogin, userInfo, setUserInfo, setIsLogin }) => {
 
           {showModal ? (
             <SignIn
-              setIsLogin={setIsLogin}
+              userInfo={userInfo}
+              getDataHandler={getDataHandler}
               setUserInfo={setUserInfo}
               showModal={showModal}
               setShowModal={setShowModal}
@@ -54,6 +76,9 @@ const Landing = ({ isLogin, userInfo, setUserInfo, setIsLogin }) => {
           </Link>
         </div>
         <button onClick={myPageHandler}>마이페이지</button>
+        <div>
+          <button onClick={logoutHandler}>로그아웃</button>
+        </div>
       </div>
     </>
   );
