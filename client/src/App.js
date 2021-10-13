@@ -3,7 +3,7 @@ import { Route, Switch } from "react-router-dom";
 import "./App.css";
 import Landing from "./pages/Landing";
 import MyPage from "./pages/MyPage";
-import AdminWrite from "./pages/AdminWrite/AdminWrite";
+import AdminWrite from "./pages/AdminWrite";
 function App() {
   const [userInfo, setUserInfo] = useState([]);
 

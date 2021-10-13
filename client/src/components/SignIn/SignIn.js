@@ -38,8 +38,13 @@ const SignIn = ({
     withCredentials: true,
   };
   const modalRef = useRef();
+  const emailRef = useRef();
+  const passwordRef = useRef();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+
+  const [failEmail, setFailEmail] = useState(false);
+  const [failPassword, setFailPassword] = useState(false);
   let history = useHistory();
 
   const closeModal = (e) => {
@@ -49,9 +54,11 @@ const SignIn = ({
   };
 
   const emailChange = (e) => {
+    setFailEmail(false);
     setEmail(e.target.value);
   };
   const passwordChange = (e) => {
+    setFailPassword(false);
     setPassword(e.target.value);
   };
 
@@ -72,6 +79,7 @@ const SignIn = ({
               <ContentWrapper>
                 <Img src={Logo} />
                 <Email
+                  failEmail={failEmail}
                   name="email"
                   type="text"
                   placeholder="이메일"
@@ -79,6 +87,7 @@ const SignIn = ({
                   onChange={(e) => emailChange(e)}
                 />
                 <Password
+                  failPassword={failPassword}
                   name="password"
                   type="password"
                   placeholder="패스워드"
@@ -104,8 +113,15 @@ const SignIn = ({
                         getDataHandler(res.data);
                         history.push("/mypage");
                       })
-                      .catch(() => {
-                        console.log("error");
+                      .catch((e) => {
+                        console.log(e.response);
+                        if (e.response.data.message === "invalid-email") {
+                          setFailEmail(true);
+                        } else if (
+                          e.response.data.message === "invalid-password"
+                        ) {
+                          setFailPassword(true);
+                        }
                       });
                   }}
                 >

@@ -2,6 +2,7 @@ import Styled from "styled-components";
 
 export const Navbar = Styled.div`
     border: 0.5px solid #c4c4c4;
+    background: #eeeeee;
     border-width:thin;
     position: absolute;
     bottom:0;

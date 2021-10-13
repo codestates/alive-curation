@@ -3,7 +3,7 @@ import axios from "axios";
 import { useHistory, Link } from "react-router-dom";
 import SignIn from "../components/SignIn/SignIn";
 import SignUp from "../components/SignUp/SignUp";
-const Landing = ({ userInfo, setUserInfo, setIsLogin, getDataHandler }) => {
+const Landing = ({ userInfo, setUserInfo, getDataHandler }) => {
   const headerOptions = {
     headers: {
       "Content-Type": "application/json",
@@ -11,7 +11,6 @@ const Landing = ({ userInfo, setUserInfo, setIsLogin, getDataHandler }) => {
     },
     withCredentials: true,
   };
-  console.log(userInfo);
   const history = useHistory();
   const [showModal, setShowModal] = useState(false);
   const [joinModal, setJoinModal] = useState(false);
