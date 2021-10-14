@@ -1,11 +1,13 @@
-const { addPosts, getAllPosts, getPosts, editPosts, deletePosts } = require('../controllers/posts.controller')
-const express = require('express');
-const router = express.Router();
+const express = require("express")
+const { addPosts, getAllPosts, getPosts, editPosts, deletePosts } = require("../controllers/posts.controller")
+const { isLoggedIn, isAdmin } = require("../lib/middleware")
 
-router.post('/posts', addPosts);
-router.get('/posts', getAllPosts);
-router.get('/posts/:post_id', getPosts);
-router.delete('/posts/:post_id', deletePosts);
-router.patch('/posts/:post_id', editPosts);
+const router = express.Router()
 
-module.exports = router;
+router.post("/posts", isLoggedIn, isAdmin, addPosts)
+router.get("/posts", getAllPosts)
+router.get("/posts/:post_id", getPosts)
+router.delete("/posts/:post_id", isLoggedIn, isAdmin, deletePosts)
+router.patch("/posts/:post_id", isLoggedIn, isAdmin, editPosts)
+
+module.exports = router
