@@ -13,11 +13,9 @@ export const Container = Styled.div`
 `;
 
 export const Background = Styled.div`
-    height:29vh;
+    height:30vh;
     width:85vw;
     background-color:#9e9e9e;
-    position: relative;
-    top:10vh;
 `;
 
 export const FormWrapper = Styled.div`

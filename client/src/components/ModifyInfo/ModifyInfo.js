@@ -18,7 +18,7 @@ import {
 } from "./ModifyInfo.Styled";
 import axios from "axios";
 // axios.defaults.withCredentials = true;
-const ModifyInfo = ({ userInfo, setUserInfo, changeDataHandler }) => {
+const ModifyInfo = ({ userinfo, setUserInfo }) => {
   const headerOptions = {
     headers: {
       "Content-Type": "application/json",
@@ -31,22 +31,21 @@ const ModifyInfo = ({ userInfo, setUserInfo, changeDataHandler }) => {
   const [passwordCheck, setPasswordCheck] = useState("");
   const [presentPassword, setPresentPassword] = useState("");
   useEffect(() => {
-    console.log(userInfo);
-    setUserInfo(JSON.parse(window.localStorage.getItem("user")));
+    console.log(userinfo);
+    // setUserInfo(JSON.parse(window.localStorage.getItem("user")));
   }, []);
-
   const modifyHandler = () => {
     if (password === passwordCheck) {
       return axios
         .patch(
           "https://localhost:8080/user",
-          { email: userInfo.email, name, password },
+          { email: userinfo.email, name, password },
           headerOptions
         )
         .then((res) => {
-          changeDataHandler({ name });
+          console.log(res);
         })
-        .catch(({ response }) => console.log(response.data));
+        .catch((e) => console.log(e));
     } else {
       console.log("비밀번호를 다시 확인해주세요");
     }
@@ -57,15 +56,13 @@ const ModifyInfo = ({ userInfo, setUserInfo, changeDataHandler }) => {
       <Container>
         <FormWrapper>
           <Form>
-            <ImgWrapper>
-              <Img src={userInfo.thumbnail} />
-            </ImgWrapper>
+            <ImgWrapper></ImgWrapper>
             <NameWrapper>
-              <Name>{userInfo.name}</Name>
-              <Auth>{userInfo.role === "user" ? "일반유저" : "운영자"}</Auth>
+              {/* <Name>{userinfo.name}</Name> */}
+              {/* <Auth>{userinfo.role === "user" ? "일반유저" : "운영자"}</Auth> */}
             </NameWrapper>
             <InputWrapper>
-              <Div2>{userInfo.email}</Div2>
+              {/* <Div2>{userinfo.email}</Div2> */}
               <Div>이메일</Div>
               <Input
                 name="password"

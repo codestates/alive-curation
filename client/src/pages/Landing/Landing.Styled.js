@@ -1,11 +1,13 @@
 import Styled from "styled-components";
-import { Link } from "react-router-dom"
+import { Link } from "react-router-dom";
 
 export const Container = Styled.div`
     display:flex;
     flex-direction:column;
     justify-content:center;
     align-items:center;
+    position:relative;
+    top:10em;
 `;
 
 export const ImgWrapper = Styled.div`
@@ -13,15 +15,51 @@ export const ImgWrapper = Styled.div`
     margin-bottom:10em;
 `;
 
+export const DivWrapper = Styled.div`
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    position : relative;
+    /* border:solid; */
+`;
+
+export const DivWrapper2 = Styled(DivWrapper)`
+    left:38em;
+    bottom:15em;
+`;
+
+export const DivWrapper3 = Styled(DivWrapper)`
+    right:37em;
+    bottom:15em;
+`;
+
+export const Div = Styled.div`
+    font-size:2.5em;
+`;
+
+export const Div2 = Styled(Div)`
+    font-size:4em;
+`;
+
+export const DivCenter = Styled.div`
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    position:relative;
+    left:15em;
+    top:5em;
+`;
+
 export const ImgLeftWrapper = Styled(ImgWrapper)`
     position:relative;
     right:15em;
-`
+`;
 
 export const ImgRightWrapper = Styled(ImgWrapper)`
     position:relative;
     left :15em;
-`
+`;
 
 export const Img = Styled.img`
     width:100%;
@@ -35,9 +73,7 @@ export const NavBar = Styled.nav`
     justify-content: space-between;
     align-items: center;
     border-bottom: 1px solid black;
-`
-
-
+`;
 
 export const SignInBtn = Styled.div`
     width: 4.68rem;
@@ -51,7 +87,7 @@ export const SignInBtn = Styled.div`
     justify-content: center;
     align-items: center;
     cursor:pointer;
-`
+`;
 
 export const Btn = Styled.div`
     width: 4.68rem;
@@ -65,7 +101,7 @@ export const Btn = Styled.div`
     justify-content: center;
     align-items: center;
     cursor:pointer;
-`
+`;
 
 export const StyledLink = Styled(Link)`
     width: 4.68rem;
@@ -79,9 +115,7 @@ export const StyledLink = Styled(Link)`
     justify-content: center;
     align-items: center;
     text-decoration: none;
-`
-
-
+`;
 
 // export const HeaderDisplay = Styled.div`
 //     width: 100%;
@@ -150,7 +184,7 @@ export const StyledLink = Styled(Link)`
 //     width: calc(100% - 10.375*2rem);
 //     height: 38.43rem;
 //     border: 1px solid black;
-    
+
 // `
 
 // export const BookRecommendRow = Styled.article`

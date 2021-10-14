@@ -12,7 +12,6 @@ const NavigationBar = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [user, setUser] = useState({});
   const [adminMode, setAdminMode] = useState(false);
-
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -31,7 +30,6 @@ const NavigationBar = () => {
 
   const activeModal = () => {
     setShowModal(true);
-    // setShowModal((open) => !open)
   };
 
   const logout = () => {
@@ -54,9 +52,7 @@ const NavigationBar = () => {
       return (
         <>
           <Btn onClick={logout}>LogOut</Btn>
-          <StyledLink to="/mypage" userInfo={user}>
-            {user.name}
-          </StyledLink>
+          <StyledLink to="/mypage">{user.name}</StyledLink>
         </>
       );
     } else if (user.role === "admin") {
@@ -71,9 +67,7 @@ const NavigationBar = () => {
           ) : (
             <Btn onClick={changeMode}> 관리모드 Off </Btn>
           )}
-          <StyledLink to="/mypage" userInfo={user}>
-            {user.name}
-          </StyledLink>
+          <StyledLink to="/mypage">{user.name}</StyledLink>
           <Btn onClick={logout}>LogOut</Btn>
         </>
       );
@@ -107,7 +101,6 @@ const NavigationBar = () => {
           setUser={setUser}
           showModal={showModal}
           setShowModal={setShowModal}
-          setUser={setUser}
         ></SignIn>
       ) : null}
     </>

@@ -2,21 +2,18 @@ import React from "react";
 import ModifyInfo from "../../components/ModifyInfo/ModifyInfo";
 import SideBar from "../../components/SideBar/SideBar";
 import NavigationBar from "../../components/NavigationBar/NavigationBar";
-const MyPage = ({ userInfo, setUserInfo, changeDataHandler }) => {
+
+import { NavBar } from "../Landing/Landing.Styled";
+const MyPage = ({ userinfo, setUserInfo }) => {
   return (
     <>
-      {/* <div>
+      <NavBar>
         <NavigationBar />
-        <ModifyInfo />
-        <SideBar />
-      </div> */}
+      </NavBar>
+      <ModifyInfo userinfo={userinfo} setUserInfo={setUserInfo} />
+      <SideBar userinfo={userinfo} />
     </>
   );
 };
 
 export default MyPage;
-
-// userInfo={userInfo} setUserInfo={setUserInfo}
-// changeDataHandler={changeDataHandler}
-// userInfo={userInfo}
-// setUserInfo={setUserInfo}
