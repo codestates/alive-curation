@@ -18,7 +18,7 @@ import {
 } from "./ModifyInfo.Styled";
 import axios from "axios";
 // axios.defaults.withCredentials = true;
-const ModifyInfo = ({ userinfo, setUserInfo }) => {
+const ModifyInfo = ({ user }) => {
   const headerOptions = {
     headers: {
       "Content-Type": "application/json",
@@ -30,16 +30,13 @@ const ModifyInfo = ({ userinfo, setUserInfo }) => {
   const [password, setPassword] = useState("");
   const [passwordCheck, setPasswordCheck] = useState("");
   const [presentPassword, setPresentPassword] = useState("");
-  useEffect(() => {
-    console.log(userinfo);
-    // setUserInfo(JSON.parse(window.localStorage.getItem("user")));
-  }, []);
+
   const modifyHandler = () => {
     if (password === passwordCheck) {
       return axios
         .patch(
           "https://localhost:8080/user",
-          { email: userinfo.email, name, password },
+          { email: user.email, name, password },
           headerOptions
         )
         .then((res) => {
@@ -56,13 +53,15 @@ const ModifyInfo = ({ userinfo, setUserInfo }) => {
       <Container>
         <FormWrapper>
           <Form>
-            <ImgWrapper></ImgWrapper>
+            <ImgWrapper>
+              <Img src={user.thumbnail} />
+            </ImgWrapper>
             <NameWrapper>
-              {/* <Name>{userinfo.name}</Name> */}
-              {/* <Auth>{userinfo.role === "user" ? "일반유저" : "운영자"}</Auth> */}
+              <Name>{user.name}</Name>
+              <Auth>{user.role === "user" ? "일반유저" : "운영자"}</Auth>
             </NameWrapper>
             <InputWrapper>
-              {/* <Div2>{userinfo.email}</Div2> */}
+              <Div2>{user.email}</Div2>
               <Div>이메일</Div>
               <Input
                 name="password"

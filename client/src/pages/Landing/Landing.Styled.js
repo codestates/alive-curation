@@ -43,6 +43,7 @@ export const Div2 = Styled(Div)`
 `;
 
 export const DivCenter = Styled.div`
+
     display:flex;
     align-items:center;
     justify-content:center;
@@ -90,6 +91,8 @@ export const SignInBtn = Styled.div`
 `;
 
 export const Btn = Styled.div`
+    position:relative;
+    left:48em;
     width: 4.68rem;
     height: 1.56rem;
     background-color: black;

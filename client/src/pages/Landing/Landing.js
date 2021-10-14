@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import {
   Container,
   Img,
@@ -11,7 +11,6 @@ import {
   Div2,
   DivCenter,
 } from "./Landing.Styled";
-import { Link } from "react-router-dom";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import soloQuestion from "../../images/soloquestion.svg";
@@ -26,16 +25,7 @@ const Landing = () => {
       duration: 2000,
     });
   }, []);
-  const [scroll, setScroll] = useState(false);
-  const scrollHandler = () => {
-    window.onmousewheel = (e) => {
-      if (e.wheelDelta > 0) {
-        setScroll(false);
-      } else {
-        setScroll(true);
-      }
-    };
-  };
+
   return (
     <>
       <NavBar>
@@ -78,9 +68,9 @@ const Landing = () => {
             <Div2
               data-aos="fade-down"
               data-aos-easing="linear"
-              data-aos-duration="1500"
+              data-aos-duration="2500"
             >
-              함께 하세요!
+              지금 함께 하세요!
             </Div2>
           </DivCenter>
         </ImgLeftWrapper>

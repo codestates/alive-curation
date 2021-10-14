@@ -1,5 +1,4 @@
-import React, { useState, useRef, useEffect } from "react";
-import { useHistory } from "react-router-dom";
+import React, { useState, useRef } from "react";
 import axios from "axios";
 import SignUp from "../SignUp/SignUp";
 import {
@@ -22,15 +21,7 @@ import {
 import Logo from "../../images/logo.svg";
 import Ad from "../../images/recommend.png";
 // axios.defaults.withCredentials = true;
-const SignIn = ({
-  setUser,
-  userInfo,
-  showModal,
-  setShowModal,
-  joinModal,
-  setJoinModal,
-  getDataHandler,
-}) => {
+const SignIn = ({ setUser, userInfo, setShowModal }) => {
   const headerOptions = {
     headers: {
       "Content-Type": "application/json",
@@ -44,8 +35,11 @@ const SignIn = ({
 
   const [failEmail, setFailEmail] = useState(false);
   const [failPassword, setFailPassword] = useState(false);
-  let history = useHistory();
+  const [joinModal, setJoinModal] = useState(false);
 
+  const joinButtonHandler = () => {
+    setJoinModal(true);
+  };
   const closeModal = (e) => {
     if (modalRef.current === e.target) {
       setShowModal(false);
@@ -120,16 +114,15 @@ const SignIn = ({
                 </LoginBtn>
                 <Line />
                 <div>
-                  <JoinBtn
-                    onClick={() => {
-                      setShowModal(false);
-                      setJoinModal(true);
-                    }}
-                  >
-                    회원가입
-                  </JoinBtn>
-                  {joinModal ? <SignUp userInfo={userInfo} /> : null}
+                  <JoinBtn onClick={joinButtonHandler}>회원가입</JoinBtn>
                 </div>
+                {joinModal ? (
+                  <SignUp
+                    setShowModal={setShowModal}
+                    setJoinModal={setJoinModal}
+                    joinModal={joinModal}
+                  />
+                ) : null}
               </ContentWrapper>
             </ModalContents>
           </LoginModal>
