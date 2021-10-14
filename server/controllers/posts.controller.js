@@ -74,7 +74,7 @@ module.exports = {
 				return res.status(404).json({ message: "data-not-found" })
 			}
 			await db.deletePosts(post_id)
-			res.status(200).json({ message: "delete-posts-}successfully" })
+			res.status(200).json({ message: "delete-posts-successfully" })
 		} catch (err) {
 			res.status(500).json({ message: "server-error" })
 		}
