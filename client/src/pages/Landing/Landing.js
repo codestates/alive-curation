@@ -1,32 +1,88 @@
-import React from "react";
-import { Container, Img, ImgWrapper,ImgLeftWrapper,ImgRightWrapper, NavBar } from "./Landing.Styled";
-import { Link } from "react-router-dom"
-import aos from "aos"
+import React, { useState, useEffect } from "react";
+import {
+  Container,
+  Img,
+  Div,
+  DivWrapper2,
+  DivWrapper3,
+  ImgLeftWrapper,
+  ImgRightWrapper,
+  NavBar,
+  Div2,
+  DivCenter,
+} from "./Landing.Styled";
+import { Link } from "react-router-dom";
+import AOS from "aos";
+import "aos/dist/aos.css";
 import soloQuestion from "../../images/soloquestion.svg";
-import updateImg from "../../images/update.svg"
-import teamImg from "../../images/team.svg"
-import Carousel from "../../components/Carousel/Carousel"
+import updateImg from "../../images/update.svg";
+import teamImg from "../../images/team.svg";
+import Carousel from "../../components/Carousel/Carousel";
 import NavigationBar from "../../components/NavigationBar/NavigationBar";
 
 const Landing = () => {
+  useEffect(() => {
+    AOS.init({
+      duration: 2000,
+    });
+  }, []);
+  const [scroll, setScroll] = useState(false);
+  const scrollHandler = () => {
+    window.onmousewheel = (e) => {
+      if (e.wheelDelta > 0) {
+        setScroll(false);
+      } else {
+        setScroll(true);
+      }
+    };
+  };
   return (
     <>
-    <NavBar>
-      <NavigationBar/>
-    </NavBar>
-      <Carousel/>
+      <NavBar>
+        <NavigationBar />
+      </NavBar>
+      <Carousel />
       <Container>
-        <ImgLeftWrapper>
-          <Img data-aos="fade-up"
-     data-aos-anchor-placement="top-center" src={soloQuestion} />
+        <ImgLeftWrapper
+          data-aos="fade-down"
+          data-aos-easing="linear"
+          data-aos-duration="1500"
+        >
+          <Img src={soloQuestion} />
+          <DivWrapper2>
+            <Div>좋은책을 추천받고 싶을땐?</Div>
+          </DivWrapper2>
         </ImgLeftWrapper>
-        <ImgRightWrapper>
-          <Img data-aos="fade-up"
-     data-aos-anchor-placement="top-center" src={updateImg}/>
+        <ImgRightWrapper
+          data-aos="fade-down"
+          data-aos-easing="linear"
+          data-aos-duration="1500"
+        >
+          <Img src={updateImg} />
+          <DivWrapper3>
+            <Div>우리 서비스는 매일 전문가들이</Div>
+            <Div>직접 업데이트 합니다.</Div>
+          </DivWrapper3>
         </ImgRightWrapper>
-        <ImgLeftWrapper >
-          <Img data-aos="fade-up"
-     data-aos-anchor-placement="top-center" src={teamImg}/>
+        <ImgLeftWrapper
+          data-aos="fade-down"
+          data-aos-easing="linear"
+          data-aos-duration="1500"
+        >
+          <Img src={teamImg} />
+          <DivWrapper2>
+            <Div>전문 큐레이션과 함께하는</Div>
+            <Div>Alive Curation</Div>
+          </DivWrapper2>
+          <DivCenter>
+            <Div2
+              data-aos="fade-down"
+              data-aos-easing="linear"
+              data-aos-duration="1500"
+            >
+              함께 하세요!
+            </Div2>
+          </DivCenter>
         </ImgLeftWrapper>
       </Container>
     </>
@@ -34,7 +90,6 @@ const Landing = () => {
 };
 
 export default Landing;
-
 
 // import React, { useState, useEffect } from "react"
 // import { Link } from "react-router-dom"
@@ -91,8 +146,6 @@ export default Landing;
 //   },[])
 
 //   console.log(books)
-
-
 
 // 	const activeModal = () => {
 // 		setShowModal((open) => !open)
@@ -167,8 +220,6 @@ export default Landing;
 //             <MainArticleComment/>
 //           </MainArticle>
 //         </MainArticleContainer> */}
-
-
 
 // 			<BookRecommendContainer>
 // 				<BookRecommendRow>
