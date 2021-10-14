@@ -22,6 +22,7 @@ const SideBar = ({ user }) => {
   const deleteUser = () => {
     axios
       .delete("https://localhost:8080/user", {}, headerOptions)
+      .then((res) => console.log(res))
       .catch((e) => console.log(e));
   };
   return (

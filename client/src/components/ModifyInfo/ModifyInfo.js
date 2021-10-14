@@ -26,25 +26,22 @@ const ModifyInfo = ({ user }) => {
     },
     withCredentials: true,
   };
-  const [name, setName] = useState("");
   const [password, setPassword] = useState("");
   const [passwordCheck, setPasswordCheck] = useState("");
-  const [presentPassword, setPresentPassword] = useState("");
+  const [changePassword, setChangePassword] = useState("");
 
   const modifyHandler = () => {
     if (password === passwordCheck) {
       return axios
         .patch(
           "https://localhost:8080/user",
-          { email: user.email, name, password },
+          { password, changePassword },
           headerOptions
         )
         .then((res) => {
           console.log(res);
         })
         .catch((e) => console.log(e));
-    } else {
-      console.log("비밀번호를 다시 확인해주세요");
     }
   };
   return (
@@ -69,21 +66,21 @@ const ModifyInfo = ({ user }) => {
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
               />
-              <Div>변경할 비밀번호</Div>
+              <Div>비밀번호</Div>
               <Input
-                name="password"
+                name="passwordCheck"
                 type="password"
                 value={passwordCheck}
                 onChange={(e) => setPasswordCheck(e.target.value)}
               />
               <Div>비밀번호 확인</Div>
               <Input
-                name="password"
+                name="passwordChange"
                 type="password"
-                value={passwordCheck}
-                onChange={(e) => setPresentPassword(e.target.value)}
+                value={changePassword}
+                onChange={(e) => setChangePassword(e.target.value)}
               />
-              <Div>현재 비밀번호</Div>
+              <Div>변경할 비밀번호</Div>
               <BtnWrapper>
                 <Btn onClick={modifyHandler}>변경하기</Btn>
               </BtnWrapper>
