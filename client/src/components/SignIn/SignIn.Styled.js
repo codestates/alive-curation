@@ -27,7 +27,6 @@ export const Modal = Styled.div`
 `;
 
 export const ModalWrapper = Styled.div`
-    border:solid;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -42,7 +41,6 @@ export const SlideModal = Styled.div`
 `;
 
 export const SlideModalContents = Styled.div`
-    border:solid;
   display: flex;
   align-items: center;
   justify-content: center;
