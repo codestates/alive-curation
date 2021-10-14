@@ -20,10 +20,10 @@ import {
   ContentWrapper,
 } from "./SignIn.Styled";
 import Logo from "../../images/logo.svg";
-import Ad from "../../images/recommend.png"
+import Ad from "../../images/recommend.png";
 // axios.defaults.withCredentials = true;
 const SignIn = ({
-    setUser,
+  setUser,
   userInfo,
   showModal,
   setShowModal,
@@ -39,8 +39,6 @@ const SignIn = ({
     withCredentials: true,
   };
   const modalRef = useRef();
-  const emailRef = useRef();
-  const passwordRef = useRef();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -98,38 +96,25 @@ const SignIn = ({
                 <LoginBtn
                   onClick={() => {
                     return axios
-                  //     .post(
-                  //       "https://localhost:8080/user/signin",
-                  //       {
-                  //         email,
-                  //         password,
-                  //       },
-                  //       headerOptions
-                  //     )
-                  //     .then((res) => {
-                  //       window.localStorage.setItem(
-                  //         "user"
-                  //       );
-                  //       history.push("/mypage");
-                  //     })
-                  //     .catch((e) => {
-                  //       console.log(e.response);
-                  //     });
-                  // }}
-                  .post("https://localhost:8080/user/signin", {
-                        email,
-                        password,
-                      })
+                      .post(
+                        "https://localhost:8080/user/signin",
+                        {
+                          email,
+                          password,
+                        },
+                        headerOptions
+                      )
                       .then((res) => {
-                        setUser(res.data)
-                        setShowModal(false)
+                        console.log(res.data);
+                        setUser(res.data);
+                        setShowModal(false);
                       })
-                      .catch(function(err){
-                        if (err.response){
-                          console.log(err.response.data)
+                      .catch(function (err) {
+                        if (err.response) {
+                          console.log(err.response.data);
                         }
-                      })
-                    }}
+                      });
+                  }}
                 >
                   로그인
                 </LoginBtn>
