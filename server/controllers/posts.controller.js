@@ -28,59 +28,55 @@ module.exports = {
 				message: "content-created",
 			})
 		} catch (err) {
-			return res.status(500).send("server-error")
+			return res.status(500).json({ message: "server-error" })
 		}
 	},
-
 	getAllPosts: async (req, res) => {
 		try {
 			const data = await db.getAllPosts()
 			if (data.length === 0) {
-				return res.status(400).send("data-not-exists")
+				return res.status(400).json({ message: "data-not-exists" })
 			}
-			res.status(200).json({ data, message: "get-all-posts-successfully" })
+			res.status(200).json({ data })
 		} catch (err) {
-			res.status(500).send("server-error")
+			res.status(500).json({ message: "server-error" })
 		}
 	},
-
 	getPosts: async (req, res) => {
 		try {
 			const post_id = req.params.post_id
 			const post = await db.getPostById(post_id)
 			if (!post_id) {
-				return res.status(404).send("data-not-found")
+				return res.status(404).json({ message: "data-not-found" })
 			}
 			res.status(200).json({ post, message: "get-posts-successfully" })
 		} catch (err) {
-			res.status(500).send("server-error")
+			res.status(500).json({ message: "server-error" })
 		}
 	},
-
 	editPosts: async (req, res) => {
 		try {
 			const { post_id, content } = req.body
 			if (!post_id) {
-				return res.status(404).send("data-not-found")
+				return res.status(404).json({ message: "data-not-found" })
 			}
 			await db.editPosts(post_id, content)
 			const editedPosts = await db.getPostById(post_id)
 			res.status(200).json({ editedPosts, message: "edit-posts-successfully" })
 		} catch (err) {
-			res.status(500).send("server-error")
+			res.status(500).json({ message: "server-error" })
 		}
 	},
-
 	deletePosts: async (req, res) => {
 		try {
 			const post_id = req.params
 			if (!post_id) {
-				return res.status(404).send("data-not-found")
+				return res.status(404).json({ message: "data-not-found" })
 			}
 			await db.deletePosts(post_id)
-			res.status(200).send("delete-posts-successfully")
+			res.status(200).json({ message: "delete-posts-}successfully" })
 		} catch (err) {
-			res.status(500).send("server-error")
+			res.status(500).json({ message: "server-error" })
 		}
 	},
 }
