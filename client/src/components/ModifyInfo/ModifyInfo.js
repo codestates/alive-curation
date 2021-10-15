@@ -18,7 +18,7 @@ import {
 } from "./ModifyInfo.Styled";
 import axios from "axios";
 // axios.defaults.withCredentials = true;
-const ModifyInfo = ({ userinfo, setUserInfo }) => {
+const ModifyInfo = ({ user }) => {
   const headerOptions = {
     headers: {
       "Content-Type": "application/json",
@@ -26,28 +26,22 @@ const ModifyInfo = ({ userinfo, setUserInfo }) => {
     },
     withCredentials: true,
   };
-  const [name, setName] = useState("");
   const [password, setPassword] = useState("");
   const [passwordCheck, setPasswordCheck] = useState("");
-  const [presentPassword, setPresentPassword] = useState("");
-  useEffect(() => {
-    console.log(userinfo);
-    // setUserInfo(JSON.parse(window.localStorage.getItem("user")));
-  }, []);
+  const [changePassword, setChangePassword] = useState("");
+
   const modifyHandler = () => {
     if (password === passwordCheck) {
       return axios
         .patch(
           "https://localhost:8080/user",
-          { email: userinfo.email, name, password },
+          { password, changePassword },
           headerOptions
         )
         .then((res) => {
           console.log(res);
         })
         .catch((e) => console.log(e));
-    } else {
-      console.log("비밀번호를 다시 확인해주세요");
     }
   };
   return (
@@ -56,13 +50,15 @@ const ModifyInfo = ({ userinfo, setUserInfo }) => {
       <Container>
         <FormWrapper>
           <Form>
-            <ImgWrapper></ImgWrapper>
+            <ImgWrapper>
+              <Img src={user.thumbnail} />
+            </ImgWrapper>
             <NameWrapper>
-              {/* <Name>{userinfo.name}</Name> */}
-              {/* <Auth>{userinfo.role === "user" ? "일반유저" : "운영자"}</Auth> */}
+              <Name>{user.name}</Name>
+              <Auth>{user.role === "user" ? "일반유저" : "운영자"}</Auth>
             </NameWrapper>
             <InputWrapper>
-              {/* <Div2>{userinfo.email}</Div2> */}
+              <Div2>{user.email}</Div2>
               <Div>이메일</Div>
               <Input
                 name="password"
@@ -70,21 +66,21 @@ const ModifyInfo = ({ userinfo, setUserInfo }) => {
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
               />
-              <Div>변경할 비밀번호</Div>
+              <Div>비밀번호</Div>
               <Input
-                name="password"
+                name="passwordCheck"
                 type="password"
                 value={passwordCheck}
                 onChange={(e) => setPasswordCheck(e.target.value)}
               />
               <Div>비밀번호 확인</Div>
               <Input
-                name="password"
+                name="passwordChange"
                 type="password"
-                value={passwordCheck}
-                onChange={(e) => setPresentPassword(e.target.value)}
+                value={changePassword}
+                onChange={(e) => setChangePassword(e.target.value)}
               />
-              <Div>현재 비밀번호</Div>
+              <Div>변경할 비밀번호</Div>
               <BtnWrapper>
                 <Btn onClick={modifyHandler}>변경하기</Btn>
               </BtnWrapper>

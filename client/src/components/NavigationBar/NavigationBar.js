@@ -11,7 +11,8 @@ const NavigationBar = () => {
   const [showModal, setShowModal] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
   const [user, setUser] = useState({});
-  const [adminMode, setAdminMode] = useState(false);
+  // const [adminMode, setAdminMode] = useState(false);
+
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -43,7 +44,7 @@ const NavigationBar = () => {
       )
       .then(() => {
         setUser("");
-        setAdminMode(false);
+        // setAdminMode(false);
       });
   };
 
@@ -52,13 +53,13 @@ const NavigationBar = () => {
       return (
         <>
           <Btn onClick={logout}>LogOut</Btn>
-          <StyledLink to="/mypage">{user.name}</StyledLink>
+          <StyledLink to="/mypage">MyPage</StyledLink>
         </>
       );
     } else if (user.role === "admin") {
       return (
         <>
-          <StyledLink to="/search">
+          {/* <StyledLink to="/search">
             <BiSearch />
           </StyledLink>
           <StyledLink to="/post">글쓰기</StyledLink>
@@ -66,9 +67,9 @@ const NavigationBar = () => {
             <Btn onClick={changeMode}> 관리모드 On </Btn>
           ) : (
             <Btn onClick={changeMode}> 관리모드 Off </Btn>
-          )}
-          <StyledLink to="/mypage">{user.name}</StyledLink>
+          )} */}
           <Btn onClick={logout}>LogOut</Btn>
+          <StyledLink to="/mypage">MyPage</StyledLink>
         </>
       );
     } else {
@@ -80,13 +81,13 @@ const NavigationBar = () => {
     }
   };
 
-  const changeMode = () => {
-    setAdminMode(!adminMode);
-  };
+  // const changeMode = () => {
+  //   setAdminMode(!adminMode);
+  // };
 
-  const deleteBook = (index) => {
-    console.log(index, "번째 책 삭제");
-  };
+  // const deleteBook = (index) => {
+  //   console.log(index, "번째 책 삭제");
+  // };
   //스피너
   return isLoading ? (
     <h1>Loading...</h1>
